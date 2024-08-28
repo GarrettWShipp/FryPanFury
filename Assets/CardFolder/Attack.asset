@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e387cda63525d044dbc1208086918e61, type: 3}
   m_Name: Attack
   m_EditorClassIdentifier: 
-  name: Attack
-  description: Deals selected enemy one damage
+  name: Cast Iron
+  description: Hit Enemy with your pan dealing 1 damage
   artwork: {fileID: 0}
   manaCost: 1
   attack: 1
