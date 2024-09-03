@@ -6,9 +6,6 @@ using TMPro;
 public class PlayerManager : MonoBehaviour
 {
     //Player stats
-    public int curHealth;
-    public int health;
-
     public int curMana;
     public int mana;
 
@@ -18,13 +15,15 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        curHealth = health;
         curMana = mana;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (curMana == 0)
+        {
+            Debug.Log("Out of mana");
+        }
     }
 }
