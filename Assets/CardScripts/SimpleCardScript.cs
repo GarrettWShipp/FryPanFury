@@ -12,5 +12,5 @@ public class SimpleCardScript : ScriptableObject
 
     public int manaCost;
     public int attack;
-    public int health;
+    public int Defensive;
 }
