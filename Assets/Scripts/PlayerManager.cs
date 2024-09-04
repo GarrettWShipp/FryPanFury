@@ -11,7 +11,7 @@ public class PlayerManager : MonoBehaviour
 
     public int defense;
 
-    public int handSize;
+    public int deckSize;
     // Start is called before the first frame update
     void Start()
     {

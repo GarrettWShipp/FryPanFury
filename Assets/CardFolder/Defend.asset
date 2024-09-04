@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e387cda63525d044dbc1208086918e61, type: 3}
   m_Name: Defend
   m_EditorClassIdentifier: 
-  name: Block
+  name: Iron Skin
   description: Block 3 incoming damage
   artwork: {fileID: 0}
   manaCost: 1

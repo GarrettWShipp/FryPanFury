@@ -13,6 +13,7 @@ public class CardDisplay : MonoBehaviour
 
     public TMP_Text manaText;
     public TMP_Text attackText;
+    public TMP_Text defenseText;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,7 @@ public class CardDisplay : MonoBehaviour
 
         manaText.text = card.manaCost.ToString();
         attackText.text = card.attack.ToString();
+        defenseText.text = card.Defensive.ToString();
     }
 
     private void Update()

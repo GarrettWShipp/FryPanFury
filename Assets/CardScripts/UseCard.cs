@@ -20,7 +20,6 @@ public class UseCard : MonoBehaviour
     void Start()
     {
         cardMana = cardScript.manaCost;
-        playerMana = player.curMana;
 
         cardAttack = cardScript.attack;
         cardDefense = cardScript.Defensive;
@@ -29,7 +28,7 @@ public class UseCard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        playerMana = player.curMana;
     }
 
     public void TryToPlayCard()
@@ -51,6 +50,8 @@ public class UseCard : MonoBehaviour
         if (playerMana < cardMana)
         {
             Debug.Log("You don't have the mana to play this card");
+            Debug.Log("Card mana is " + cardMana);
+            Debug.Log("your mana is " + playerMana);
         }
     }
 }
