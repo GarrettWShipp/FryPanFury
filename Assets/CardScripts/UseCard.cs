@@ -10,48 +10,54 @@ public class UseCard : MonoBehaviour
     public PlayerManager player;
     public Health targetHealth;
 
-    private int cardMana;
-    private int playerMana;
+    public CardManager cardManager;
 
-    private int cardAttack;
-    private int cardDefense;
+    private int m_cardMana;
+    private int m_playerMana;
+
+    private int m_cardAttack;
+    private int m_cardDefense;
 
     // Start is called before the first frame update
     void Start()
     {
-        cardMana = cardScript.manaCost;
+        m_cardMana = cardScript.manaCost;
 
-        cardAttack = cardScript.attack;
-        cardDefense = cardScript.Defensive;
+        m_cardAttack = cardScript.attack;
+        m_cardDefense = cardScript.Defensive;
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerMana = player.curMana;
+        m_playerMana = player.curMana;
     }
 
     public void TryToPlayCard()
     {
         Debug.Log("Tried to play card");
-        if (playerMana >= cardMana)
+        if (m_playerMana >= m_cardMana)
         {
-            player.curMana -= cardMana;
+            player.curMana -= m_cardMana;
 
-            player.defense += cardDefense;
+            player.defense += m_cardDefense;
 
-            targetHealth.Damage(cardAttack);
+            targetHealth.Damage(m_cardAttack);
 
             Debug.Log("Played card");
 
+            cardManager.UseCard();
+
             this.gameObject.SetActive(false);
+            RectTransform picture = GetComponent<RectTransform>();
+            picture.anchoredPosition = new Vector2(807f, -100);
         }
 
-        if (playerMana < cardMana)
+        if (m_playerMana < m_cardMana)
         {
             Debug.Log("You don't have the mana to play this card");
-            Debug.Log("Card mana is " + cardMana);
-            Debug.Log("your mana is " + playerMana);
+            Debug.Log("Card mana is " + m_cardMana);
+            Debug.Log("your mana is " + m_playerMana);
         }
     }
 }
