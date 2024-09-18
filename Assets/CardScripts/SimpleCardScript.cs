@@ -8,7 +8,7 @@ public class SimpleCardScript : ScriptableObject
     public new string name;
     public string description;
 
-    public Sprite artwork;
+    public string cardType;
 
     public int manaCost;
     public int attack;

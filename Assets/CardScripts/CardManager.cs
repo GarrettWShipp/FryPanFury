@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class CardManager : MonoBehaviour
 {
-    
+    //public GameObject cardBar;
     public List<GameObject> Deck;
     public List<GameObject> Hand;
     public List<GameObject> Discard;
@@ -17,10 +17,12 @@ public class CardManager : MonoBehaviour
 
     private void Update()
     {
-        for (int i = 0; i < Hand.Count; i++)
-        {
 
-        }
+    }
+
+    public void AddCard()
+    {
+
     }
 
     //Puts a card from deck to hand
@@ -31,18 +33,16 @@ public class CardManager : MonoBehaviour
             ReshuffleCards();
         }
         GameObject card = Deck[0];
-        Deck.RemoveAt(0);
         Hand.Add(card);
         card.SetActive(true);
-        
+        Deck.RemoveAt(0);
     }
 
-    public void UseCard()
+    public void UseCard(GameObject card)
     {
-        GameObject card = Hand[0];
-        Hand.RemoveAt(0);
-        Discard.Add(card);
         card.SetActive(false);
+        Discard.Add(card);
+        Hand.Remove(card);
     }
 
     public void ReshuffleCards()
@@ -50,9 +50,20 @@ public class CardManager : MonoBehaviour
         while(Discard.Count != 0)
         {
             GameObject card = Discard[0];
-            Discard.RemoveAt(0);
             Deck.Add(card);
+            Discard.RemoveAt(0);
+
         }
     }
-
+    
+    public void DiscardAll()
+    {
+        while(Hand.Count != 0)
+        {
+            GameObject card = Hand[0];
+            card.SetActive(false);
+            Discard.Add(card);
+            Hand.RemoveAt(0);
+        }
+    }
 }

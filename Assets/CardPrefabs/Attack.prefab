@@ -375,6 +375,7 @@ MonoBehaviour:
   cardScript: {fileID: 11400000, guid: 304d8286e7a717b46b10e925a431b4c7, type: 2}
   player: {fileID: 0}
   targetHealth: {fileID: 0}
+  cardManager: {fileID: 0}
 --- !u!1 &1986532057098719087
 GameObject:
   m_ObjectHideFlags: 0

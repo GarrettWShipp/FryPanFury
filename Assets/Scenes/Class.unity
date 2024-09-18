@@ -158,7 +158,7 @@ MonoBehaviour:
   weapons:
   - {fileID: 1132645623}
   - {fileID: 1053979249}
-  weapon: {fileID: 1132645623}
+  weapon: {fileID: 1053979249}
 --- !u!4 &1039373958
 Transform:
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ Transform:
   m_GameObject: {fileID: 1039373956}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 985.02747, y: 386.3911, z: -6.380671}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

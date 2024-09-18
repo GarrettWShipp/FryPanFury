@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Iron Skin
   description: Block 3 incoming damage
-  artwork: {fileID: 0}
+  cardType: Skill
   manaCost: 1
   attack: 0
   Defensive: 3

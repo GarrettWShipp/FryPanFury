@@ -4,14 +4,15 @@ using UnityEngine;
 using SuperPupSystems.Helper;
 using SuperPupSystems.StateMachine;
 
+
+[System.Serializable]
 public class PlayersTurn : SimpleState
 {
-    public CardManager cardManager;
     public override void OnStart()
     {
         base.OnStart();
-
-        cardManager.DrawCard();
+        ((CombatManager)stateMachine).playerManager.curMana = ((CombatManager)stateMachine).playerManager.mana;
+        ((CombatManager)stateMachine).playerManager.defense = 0;
     }
 
     public override void UpdateState(float _dt)
@@ -22,5 +23,7 @@ public class PlayersTurn : SimpleState
     public override void OnExit()
     {
         base.OnExit();
+        Debug.Log("End turn");
+        ((CombatManager)stateMachine).cardManager.DiscardAll();
     }
 }

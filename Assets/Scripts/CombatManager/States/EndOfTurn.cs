@@ -4,10 +4,10 @@ using UnityEngine;
 using SuperPupSystems.Helper;
 using SuperPupSystems.StateMachine;
 
-
 [System.Serializable]
-public class EndCombat : SimpleState
+public class EndOfTurn : SimpleState
 {
+
     public override void OnStart()
     {
         base.OnStart();
