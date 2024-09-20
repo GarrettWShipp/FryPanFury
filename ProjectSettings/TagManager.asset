@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Mana
   - Health
+  - Card
   layers:
   - Default
   - TransparentFX
