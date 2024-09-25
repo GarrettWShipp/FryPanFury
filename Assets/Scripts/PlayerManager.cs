@@ -15,13 +15,15 @@ public class PlayerManager : MonoBehaviour
     public TMP_Text healthTotalText;
     public Slider healthSlider;
 
+    public int defense;
+    public GameObject defenseIcon;
+    public TMP_Text defenseText;
+
     public Health playerHealth;
 
     //Player stats
     public int curMana;
     public int mana;
-
-    public int defense;
 
     public int totalHandSize = 5;
     // Start is called before the first frame update
@@ -45,6 +47,17 @@ public class PlayerManager : MonoBehaviour
 
         healthSlider.value = playerHealth.currentHealth;
         healthLeftText.text = playerHealth.currentHealth.ToString();
+
+        if (defense > 0)
+        {
+            defenseIcon.SetActive(true);
+            defenseText.text = defense.ToString();
+
+        }
+        else
+        {
+            defenseIcon.SetActive(false);
+        }
 
         if (curMana == 0)
         {

@@ -11,7 +11,7 @@ public class EnemyManager : MonoBehaviour
     public TMP_Text healthTotalText;
     public Slider healthSlider;
 
-    public Health enemyHealth;
+    private Health m_health;
     public int defense;
     public GameObject defenseIcon;
     public TMP_Text defenseText;
@@ -21,16 +21,18 @@ public class EnemyManager : MonoBehaviour
     void Start()
     {
         m_player = GameObject.FindWithTag("Player");
+        m_health = this.GetComponent<Health>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        healthSlider.maxValue = enemyHealth.maxHealth;
-        healthTotalText.text = enemyHealth.maxHealth.ToString();
+        healthSlider.maxValue = m_health.maxHealth;
+        healthTotalText.text = m_health.maxHealth.ToString();
 
-        healthSlider.value = enemyHealth.currentHealth;
-        healthLeftText.text = enemyHealth.currentHealth.ToString();
+        healthSlider.value = m_health.currentHealth;
+        healthLeftText.text = m_health.currentHealth.ToString();
 
         if(defense > 0)
         {
