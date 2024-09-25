@@ -16,6 +16,7 @@ public class CombatManager : SimpleStateMachine
     public CardManager cardManager;
     public PlayerManager playerManager;
     public EnemyManager enemyManager;
+    public GameObject combatStatsMenu;
 
     private void Awake()
     {
@@ -31,11 +32,16 @@ public class CombatManager : SimpleStateMachine
     void Start()
     {
         ChangeState(nameof(PlayersTurn));
+
+        enemyManager.attacking.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(GameObject.FindGameObjectsWithTag("Enemy").Length <= 0)
+        {
+            ChangeState(nameof(EndCombat));
+        }
     }
 }

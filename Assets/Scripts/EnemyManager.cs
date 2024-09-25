@@ -12,9 +12,14 @@ public class EnemyManager : MonoBehaviour
     public Slider healthSlider;
 
     private Health m_health;
+    public GameObject defending;
+    public GameObject attacking;
+    public TMP_Text damageNum;
     public int defense;
     public GameObject defenseIcon;
     public TMP_Text defenseText;
+
+    public int damage;
 
     private GameObject m_player;
     // Start is called before the first frame update
@@ -28,6 +33,8 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        damageNum.text = damage.ToString();
+
         healthSlider.maxValue = m_health.maxHealth;
         healthTotalText.text = m_health.maxHealth.ToString();
 

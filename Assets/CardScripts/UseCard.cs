@@ -48,15 +48,9 @@ public class UseCard : MonoBehaviour
             player.curMana -= m_cardMana;
 
             player.defense += m_cardDefense;
-            
-            if(enemyManager.defense <= 0)
-                targetHealth.Damage(m_cardAttack);
 
-            if(enemyManager.defense > 0)
-            {
-                targetHealth.Damage(m_cardAttack - enemyManager.defense);
-                enemyManager.defense -= m_cardAttack;
-            }
+            targetHealth.Damage(m_cardAttack - enemyManager.defense);
+            enemyManager.defense -= m_cardAttack;
 
 
             Debug.Log("Played card");

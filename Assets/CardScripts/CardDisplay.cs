@@ -7,6 +7,7 @@ using TMPro;
 public class CardDisplay : MonoBehaviour
 {
     public SimpleCardScript card;
+    public Image cardArt;
 
     public TMP_Text nameText;
     public TMP_Text descriptionText;
@@ -19,6 +20,8 @@ public class CardDisplay : MonoBehaviour
     {
         nameText.text = card.name;
         descriptionText.text = card.description;
+
+        cardArt.sprite = card.cardImage;
 
         manaText.text = card.manaCost.ToString();
         attackText.text = card.attack.ToString();

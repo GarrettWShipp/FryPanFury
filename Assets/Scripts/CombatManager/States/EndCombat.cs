@@ -10,7 +10,9 @@ public class EndCombat : SimpleState
 {
     public override void OnStart()
     {
+        Debug.Log("End Of Combat");
         base.OnStart();
+        ((CombatManager)stateMachine).combatStatsMenu.SetActive(true);
 
     }
 

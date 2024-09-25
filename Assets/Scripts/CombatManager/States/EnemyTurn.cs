@@ -18,8 +18,18 @@ public class EnemyTurn : SimpleState
     {
         if (counter == 1)
         {
-            Debug.Log("Attack");
-            ((CombatManager)stateMachine).playerManager.GetComponent<Health>().Damage(2);
+            int dmg = ((CombatManager)stateMachine).enemyManager.damage - ((CombatManager)stateMachine).playerManager.defense;
+            Debug.Log("Attack" + dmg);
+            if (dmg > 0)
+            {
+                ((CombatManager)stateMachine).playerManager.GetComponent<Health>().Damage(dmg);
+                ((CombatManager)stateMachine).playerManager.defense -= ((CombatManager)stateMachine).enemyManager.damage;
+            }
+
+            ((CombatManager)stateMachine).enemyManager.attacking.SetActive(false);
+            ((CombatManager)stateMachine).enemyManager.defending.SetActive(true);
+
+
             counter++;
             ((CombatManager)stateMachine).ChangeState(nameof(PlayersTurn));
         }
@@ -27,6 +37,11 @@ public class EnemyTurn : SimpleState
         {
             Debug.Log("Defend");
             ((CombatManager)stateMachine).enemyManager.defense = 1;
+
+            ((CombatManager)stateMachine).enemyManager.defending.SetActive(false);
+            ((CombatManager)stateMachine).enemyManager.attacking.SetActive(true);
+
+
             counter--;
             ((CombatManager)stateMachine).ChangeState(nameof(PlayersTurn));
         }
