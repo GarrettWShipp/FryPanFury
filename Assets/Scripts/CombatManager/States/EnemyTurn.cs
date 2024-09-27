@@ -19,7 +19,6 @@ public class EnemyTurn : SimpleState
         if (counter == 1)
         {
             int dmg = ((CombatManager)stateMachine).enemyManager.damage - ((CombatManager)stateMachine).playerManager.defense;
-            Debug.Log("Attack" + dmg);
             if (dmg > 0)
             {
                 ((CombatManager)stateMachine).playerManager.GetComponent<Health>().Damage(dmg);

@@ -15,7 +15,7 @@ public class CardSlot : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData _data) 
     {
         Debug.Log("OnDrop" + _data.pointerDrag.gameObject);
-        if (_data.pointerDrag.tag == "Enemy");
+        if (_data.pointerDrag.tag != null);
         {
            _data.pointerDrag.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
            //_data.pointerDrag.GetComponent<DragnDrop>().use.targetHealth = _data.pointerDrag.gameObject;

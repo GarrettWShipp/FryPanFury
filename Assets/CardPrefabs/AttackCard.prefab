@@ -733,7 +733,7 @@ RectTransform:
   m_GameObject: {fileID: 3792456542727266652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.59999996, y: 0.59999996, z: 0.59999996}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5213179872841691394}
@@ -767,7 +767,6 @@ MonoBehaviour:
   player: {fileID: 0}
   targetHealth: {fileID: 0}
   enemyManager: {fileID: 0}
-  card: {fileID: 0}
   cardManager: {fileID: 0}
 --- !u!114 &5714410676309371585
 MonoBehaviour:

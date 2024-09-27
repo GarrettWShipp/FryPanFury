@@ -1,9 +1,5 @@
 using SuperPupSystems.Helper;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UseCard : MonoBehaviour
@@ -12,8 +8,6 @@ public class UseCard : MonoBehaviour
     public PlayerManager player;
     public Health targetHealth;
     public EnemyManager enemyManager;
-
-    public Button card;
 
     public CardManager cardManager;
 
@@ -49,9 +43,14 @@ public class UseCard : MonoBehaviour
 
             player.defense += m_cardDefense;
 
-            targetHealth.Damage(m_cardAttack - enemyManager.defense);
-            enemyManager.defense -= m_cardAttack;
-
+            if(enemyManager.defense > 0)
+            {
+                enemyManager.defense -= m_cardAttack;
+            }
+            if(enemyManager.defense <= 0)
+            {
+                targetHealth.Damage(m_cardAttack + enemyManager.defense);
+            }
 
             Debug.Log("Played card");
 
@@ -69,9 +68,4 @@ public class UseCard : MonoBehaviour
         }
     }
 
-    
-    private void OnMouseOver()
-    {
-        
-    }
 }
