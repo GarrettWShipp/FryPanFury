@@ -1,5 +1,6 @@
 using SuperPupSystems.Helper;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class UseCard : MonoBehaviour
@@ -16,11 +17,16 @@ public class UseCard : MonoBehaviour
 
     private int m_cardAttack;
     private int m_cardDefense;
+    
+    private InfoType m_infoType;
+
+    public GameObject hand;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        m_infoType = cardScript.infoType;
         m_cardMana = cardScript.manaCost;
 
         m_cardAttack = cardScript.attack;
@@ -41,23 +47,46 @@ public class UseCard : MonoBehaviour
         {
             player.curMana -= m_cardMana;
 
-            player.defense += m_cardDefense;
-
-            if(enemyManager.defense > 0)
+            if(m_infoType.attack == true)
             {
-                enemyManager.defense -= m_cardAttack;
+                if (enemyManager.defense > 0)
+                {
+                    enemyManager.defense -= m_cardAttack;
+                }
+                if (enemyManager.defense <= 0)
+                {
+                    targetHealth.Damage(m_cardAttack + enemyManager.defense);
+                }
+                Debug.Log("Played card");
+
+                cardManager.UseCard(gameObject);
             }
-            if(enemyManager.defense <= 0)
+            if(m_infoType.deffense == true)
             {
-                targetHealth.Damage(m_cardAttack + enemyManager.defense);
+
+                player.defense += m_cardDefense;
+                Debug.Log("Played card");
+
+                cardManager.UseCard(gameObject);
+
             }
+            if(m_infoType.buff == true)
+            {
+                Debug.Log("Played card");
 
-            Debug.Log("Played card");
+                cardManager.UseCard(gameObject);
+                return;
+            }
+            if (m_infoType.debuff == true)
+            {
+                Debug.Log("Played card");
 
-            cardManager.UseCard(gameObject);
+                cardManager.UseCard(gameObject);
+                return;
 
-            RectTransform picture = GetComponent<RectTransform>();
-            picture.anchoredPosition = new Vector2(807f, -100);
+            }
+            //RectTransform picture = GetComponent<RectTransform>();
+            //picture.anchoredPosition = new Vector2(807f, -100);
         }
 
         if (m_playerMana < m_cardMana)
@@ -68,4 +97,5 @@ public class UseCard : MonoBehaviour
         }
     }
 
+   
 }

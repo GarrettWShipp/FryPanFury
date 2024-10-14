@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using SuperPupSystems.Helper;
 using SuperPupSystems.StateMachine;
+using System.Linq;
 
 public class CombatManager : SimpleStateMachine
 {
@@ -13,9 +14,9 @@ public class CombatManager : SimpleStateMachine
     public EndCombat finishCombat;
 
     //Variables
+    public GameObject[] enemies;
     public CardManager cardManager;
     public PlayerManager playerManager;
-    public EnemyManager enemyManager;
     public GameObject combatStatsMenu;
 
     private void Awake()
@@ -33,13 +34,22 @@ public class CombatManager : SimpleStateMachine
     {
         ChangeState(nameof(PlayersTurn));
 
-        enemyManager.attacking.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(GameObject.FindGameObjectsWithTag("Enemy").Length <= 0)
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] gos;
+        gos = GameObject.FindGameObjectsWithTag("Enemy");
+        for (int i = 0; i >= gos.Length; i++)
+        {
+            if (gos[i].active == false)
+            {
+                enemies.Append(gos[i]);
+            }
+        }
+        if (enemies.Length <= 0)
         {
             ChangeState(nameof(EndCombat));
         }

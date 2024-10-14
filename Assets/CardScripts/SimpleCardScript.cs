@@ -13,4 +13,5 @@ public class SimpleCardScript : ScriptableObject
     public int manaCost;
     public int attack;
     public int Defensive;
+    public InfoType infoType;
 }

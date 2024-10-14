@@ -19,3 +19,8 @@ MonoBehaviour:
   manaCost: 1
   attack: 2
   Defensive: 0
+  infoType:
+    attack: 1
+    deffense: 0
+    debuff: 0
+    buff: 0

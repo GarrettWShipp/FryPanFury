@@ -3,53 +3,69 @@ using System.Collections.Generic;
 using UnityEngine;
 using SuperPupSystems.Helper;
 using SuperPupSystems.StateMachine;
+using System.Linq;
 
 [System.Serializable]
 public class EnemyTurn : SimpleState
 {
-    private int counter = 1;
+    
+
     public override void OnStart()
     {
         base.OnStart();
-        ((CombatManager)stateMachine).enemyManager.defense = 0;
+        for (int i = 0; i < ((CombatManager)stateMachine).enemies.Length; i++)
+        {
+            ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().defense = 0;
+        }
     }
 
     public override void UpdateState(float _dt)
     {
-        if (counter == 1)
+        for (int i = 0; i < ((CombatManager)stateMachine).enemies.Length; i++)
         {
-            int dmg = ((CombatManager)stateMachine).enemyManager.damage - ((CombatManager)stateMachine).playerManager.defense;
-            if (dmg > 0)
+            if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().currentAttack == "Attack")
             {
-                ((CombatManager)stateMachine).playerManager.GetComponent<Health>().Damage(dmg);
-                ((CombatManager)stateMachine).playerManager.defense -= ((CombatManager)stateMachine).enemyManager.damage;
+                ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().Attack();
             }
-
-            ((CombatManager)stateMachine).enemyManager.attacking.SetActive(false);
-            ((CombatManager)stateMachine).enemyManager.defending.SetActive(true);
-
-
-            counter++;
-            ((CombatManager)stateMachine).ChangeState(nameof(PlayersTurn));
+            if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().currentAttack == "Defend")
+            {
+                ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().Defend();
+            }
+            if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().currentAttack == "Heal")
+            {
+                ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().Heal();
+            }
+            if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().currentAttack == "Buff")
+            {
+                ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().Buff();
+            }
+            if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().currentAttack == "Debuff")
+            {
+                ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().Debuff();
+            }
+            else
+            {
+                Debug.Log("Please enter a valid move");
+            }
         }
-        else if (counter == 2) 
-        {
-            Debug.Log("Defend");
-            ((CombatManager)stateMachine).enemyManager.defense = 1;
+        
 
-            ((CombatManager)stateMachine).enemyManager.defending.SetActive(false);
-            ((CombatManager)stateMachine).enemyManager.attacking.SetActive(true);
+        ((CombatManager)stateMachine).ChangeState(nameof(PlayersTurn));
 
-
-            counter--;
-            ((CombatManager)stateMachine).ChangeState(nameof(PlayersTurn));
-        }
         base.UpdateState(_dt);
     }
 
     public override void OnExit()
     {
+        for (int i = 0; i < ((CombatManager)stateMachine).enemies.Length; i++)
+        {
+            if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().counter == ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().maxCounter + 1)
+            {
+                ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().counter = 0;
+            }
+            else
+                ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().counter++;
+        }
         base.OnExit();
-        Debug.Log("End turn");
     }
 }
