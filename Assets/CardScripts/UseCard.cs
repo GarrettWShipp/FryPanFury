@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class UseCard : MonoBehaviour
 {
     public SimpleCardScript cardScript;
-    public PlayerManager player;
-    public Health targetHealth;
-    public EnemyManager enemyManager;
 
-    public CardManager cardManager;
+    [HideInInspector] public PlayerManager playerManager;
+    [HideInInspector] public Health targetHealth;
+    [HideInInspector]public EnemyManager enemyManager;
+    [HideInInspector] public CardManager cardManager;
 
     private int m_cardMana;
     private int m_playerMana;
@@ -18,7 +18,7 @@ public class UseCard : MonoBehaviour
     private int m_cardAttack;
     private int m_cardDefense;
     
-    private InfoType m_infoType;
+    [HideInInspector] public InfoType infoType;
 
     public GameObject hand;
 
@@ -26,18 +26,20 @@ public class UseCard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_infoType = cardScript.infoType;
+        infoType = cardScript.infoType;
         m_cardMana = cardScript.manaCost;
 
         m_cardAttack = cardScript.attack;
         m_cardDefense = cardScript.Defensive;
+        playerManager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
+        cardManager = GameObject.FindWithTag("CardManager").GetComponent<CardManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
         
-            m_playerMana = player.curMana;
+            m_playerMana = playerManager.curMana;
     }
 
     public void TryToPlayCard()
@@ -45,9 +47,8 @@ public class UseCard : MonoBehaviour
         Debug.Log("Tried to play card");
         if (m_playerMana >= m_cardMana)
         {
-            player.curMana -= m_cardMana;
 
-            if(m_infoType.attack == true)
+            if(infoType.attack == true)
             {
                 if (enemyManager.defense > 0)
                 {
@@ -61,32 +62,31 @@ public class UseCard : MonoBehaviour
 
                 cardManager.UseCard(gameObject);
             }
-            if(m_infoType.deffense == true)
+            if(infoType.deffense == true)
             {
 
-                player.defense += m_cardDefense;
+                playerManager.defense += m_cardDefense;
                 Debug.Log("Played card");
 
                 cardManager.UseCard(gameObject);
 
             }
-            if(m_infoType.buff == true)
-            {
-                Debug.Log("Played card");
-
-                cardManager.UseCard(gameObject);
-                return;
-            }
-            if (m_infoType.debuff == true)
+            if(infoType.buff == true)
             {
                 Debug.Log("Played card");
 
                 cardManager.UseCard(gameObject);
                 return;
+            }
+            if (infoType.debuff == true)
+            {
+                Debug.Log("Played card");
+
+                cardManager.UseCard(gameObject);
+                return;
 
             }
-            //RectTransform picture = GetComponent<RectTransform>();
-            //picture.anchoredPosition = new Vector2(807f, -100);
+            playerManager.curMana -= m_cardMana;
         }
 
         if (m_playerMana < m_cardMana)

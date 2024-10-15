@@ -7,19 +7,17 @@ using SuperPupSystems.Helper;
 
 public class PlayerManager : MonoBehaviour
 {
-    public TMP_Text manaLeftText;
-    public TMP_Text manaTotalText;
+    public TMP_Text manaText;
     public Slider manaSlider;
 
-    public TMP_Text healthLeftText;
-    public TMP_Text healthTotalText;
+    public TMP_Text healthText;
     public Slider healthSlider;
 
     public int defense;
     public GameObject defenseIcon;
     public TMP_Text defenseText;
 
-    public Health playerHealth;
+    private Health m_health;
 
     //Player stats
     public int curMana;
@@ -31,22 +29,20 @@ public class PlayerManager : MonoBehaviour
     {
         
         curMana = mana;
+        m_health = this.GetComponent<Health>();
     }
 
     // Update is called once per frame
     void Update()
     {
         manaSlider.maxValue = mana;
-        manaTotalText.text = mana.ToString();
+        manaText.text = (int)curMana + "/" + (int)mana;
 
         manaSlider.value = curMana;
-        manaLeftText.text = curMana.ToString();
 
-        healthSlider.maxValue = playerHealth.maxHealth;
-        healthTotalText.text = playerHealth.maxHealth.ToString();
-
-        healthSlider.value = playerHealth.currentHealth;
-        healthLeftText.text = playerHealth.currentHealth.ToString();
+        healthSlider.maxValue = m_health.maxHealth;
+        healthSlider.value = m_health.currentHealth;
+        healthText.text = (int)m_health.currentHealth + "/" + (int)m_health.maxHealth;
 
         if (defense > 0)
         {

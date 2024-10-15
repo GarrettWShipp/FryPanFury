@@ -13,7 +13,7 @@ public class PlayersTurn : SimpleState
         base.OnStart();
         ((CombatManager)stateMachine).playerManager.curMana = ((CombatManager)stateMachine).playerManager.mana;
         ((CombatManager)stateMachine).playerManager.defense = 0;
-        ((CombatManager)stateMachine).cardManager.DrawCard(5);
+        ((CombatManager)stateMachine).cardManager.DrawCard(((CombatManager)stateMachine).playerManager.totalHandSize);
     }
 
     public override void UpdateState(float _dt)

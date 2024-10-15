@@ -9,18 +9,37 @@ public class CardSlot : MonoBehaviour, IDropHandler
 {
     //public DragnDrop card;
     private Health m_health;
+    private EnemyManager m_enemyManager;
+    private PlayerManager m_playerManager;
     private void Awake()
     {
         m_health = GetComponent<Health>();
     }
     public void OnDrop(PointerEventData _data) 
     {
-        Debug.Log("OnDrop selected tag: " + _data.pointerDrag.gameObject.tag);
+        Debug.Log("OnDrop selected target is " + gameObject);
         if (_data.pointerDrag != null);
         {
-           _data.pointerDrag.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
-           _data.pointerDrag.GetComponent<UseCard>().targetHealth = m_health;
-           _data.pointerDrag.GetComponent<DragnDrop>().use.TryToPlayCard();
+            if (_data.pointerDrag.GetComponent<UseCard>().infoType.attack == true || _data.pointerDrag.GetComponent<UseCard>().infoType.debuff == true)
+            {
+                if (gameObject.tag == "Enemy")
+                {
+                    m_enemyManager = GetComponent<EnemyManager>();
+                    _data.pointerDrag.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
+                   _data.pointerDrag.GetComponent<UseCard>().targetHealth = m_health;
+                   _data.pointerDrag.GetComponent<DragnDrop>().use.TryToPlayCard();
+                }
+            }
+            else
+            {
+                if(gameObject.tag == "Player")
+                {
+                    m_playerManager = GetComponent<PlayerManager>();
+                    _data.pointerDrag.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
+                    _data.pointerDrag.GetComponent<DragnDrop>().use.TryToPlayCard();
+                }
+            }
+           
 
         }
         _data.pointerDrag.GetComponent<CanvasGroup>().alpha = 1.0f;

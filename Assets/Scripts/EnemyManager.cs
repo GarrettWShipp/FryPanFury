@@ -45,6 +45,8 @@ public class EnemyManager : MonoBehaviour
 
         healthSlider.maxValue = m_health.maxHealth;
 
+        healthText.text = (int)m_health.currentHealth + "/" + (int)m_health.maxHealth;
+
         healthSlider.value = m_health.currentHealth;
         //healthText.text = m_health.currentHealth.ToString();
 
@@ -90,7 +92,7 @@ public class EnemyManager : MonoBehaviour
 
     public void Debuff()
     {
-        //Makes player Deal less damage
+        //Makes playerManager Deal less damage
         Debug.Log("Debuff");
     }
     public void Buff()

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 public class CardManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class CardManager : MonoBehaviour
     public Animator anim;
     public bool animIsDone = false;
     public int m_drawCount;
+    public TMP_Text deckText;
+    public TMP_Text discardText;
 
     // Start is called before the first frame update
 
@@ -25,6 +28,8 @@ public class CardManager : MonoBehaviour
 
     private void Update()
     {
+        deckText.text = Deck.Count.ToString();
+        discardText.text = Discard.Count.ToString();
         if (animIsDone)
         {
             GameObject card = Deck[0];
