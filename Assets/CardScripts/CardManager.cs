@@ -13,6 +13,7 @@ public class CardManager : MonoBehaviour
     public int m_drawCount;
     public TMP_Text deckText;
     public TMP_Text discardText;
+    private int m_ranInt;
 
     // Start is called before the first frame update
 
@@ -28,14 +29,15 @@ public class CardManager : MonoBehaviour
 
     private void Update()
     {
+        
         deckText.text = Deck.Count.ToString();
         discardText.text = Discard.Count.ToString();
         if (animIsDone)
         {
-            GameObject card = Deck[0];
+            GameObject card = Deck[m_ranInt];
             Hand.Add(card);
             card.SetActive(true);
-            Deck.RemoveAt(0);
+            Deck.RemoveAt(m_ranInt);
             animIsDone = false;
             //AudioManager.instance.PlaySFX("Draw");
             m_drawCount -= 1;
@@ -55,6 +57,7 @@ public class CardManager : MonoBehaviour
     //Puts a card from deck to hand
     public void DrawCard(int _drawAmount)
     {
+        m_ranInt = Random.Range(0, Deck.Count);
         m_drawCount = _drawAmount;
         if(Deck.Count == 0)
         {

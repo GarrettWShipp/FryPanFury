@@ -13,7 +13,6 @@ public class GetCardManager : MonoBehaviour
 
     public void AnimTrigger()
     {
-        Debug.Log("anim is done");
         m_cardManager.GetComponent<CardManager>().animIsDone = true;
         AudioManager.instance.PlaySFX("Draw");
     }

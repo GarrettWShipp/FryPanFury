@@ -7,7 +7,7 @@ public class UseCard : MonoBehaviour
 {
     public SimpleCardScript cardScript;
 
-    [HideInInspector] public PlayerManager playerManager;
+    public PlayerManager playerManager;
     [HideInInspector] public Health targetHealth;
     [HideInInspector]public EnemyManager enemyManager;
     [HideInInspector] public CardManager cardManager;
@@ -24,7 +24,7 @@ public class UseCard : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         infoType = cardScript.infoType;
         m_cardMana = cardScript.manaCost;

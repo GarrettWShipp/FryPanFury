@@ -27,13 +27,23 @@ public class EnemyManager : MonoBehaviour
     [HideInInspector] public string currentAttack;
     [HideInInspector] public int counter = 0;
     [HideInInspector] public int maxCounter;
+
+    public float flashTime;
+    Color origionalColor;
+    public Image Image;
+
+    private Animator m_anim;
+    public bool enemyAnimIsDone = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        m_anim = GetComponent<Animator>();
         m_player = GameObject.FindWithTag("Player");
         m_health = this.GetComponent<Health>();
         m_enemyAttackPattern = this.GetComponent<EnemyAttackPattern>();
         maxCounter = m_enemyAttackPattern.attackPattern.Length;
+        origionalColor = Image.color;
 
     }
 
@@ -75,12 +85,14 @@ public class EnemyManager : MonoBehaviour
     {
         //Deal damage
         Debug.Log("Attack");
+        m_anim.SetTrigger("Attack");
         int dmg = damage - defense;
         if (dmg > 0)
         {
             m_player.GetComponent<Health>().Damage(dmg);
             m_player.GetComponent<PlayerManager>().defense -= damage;
         }
+        enemyAnimIsDone = false;
     }
 
     public void Defend()
@@ -104,5 +116,20 @@ public class EnemyManager : MonoBehaviour
     {
         //Heal lowest Enemy
         Debug.Log("Heal");
+    }
+
+    public void FlashRed()
+    {
+        Image.color = Color.red;
+        Invoke("ResetColor", flashTime);
+    }
+    public void ResetColor()
+    {
+        Image.color = origionalColor;
+    }
+
+    public void AnimTrigger()
+    {
+        enemyAnimIsDone = true;
     }
 }

@@ -8,8 +8,6 @@ using System.Linq;
 [System.Serializable]
 public class EnemyTurn : SimpleState
 {
-    
-
     public override void OnStart()
     {
         base.OnStart();
@@ -43,15 +41,9 @@ public class EnemyTurn : SimpleState
             {
                 ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().Debuff();
             }
-            else
-            {
-                Debug.Log("Please enter a valid move");
-            }
+            
         }
-        
-
         ((CombatManager)stateMachine).ChangeState(nameof(PlayersTurn));
-
         base.UpdateState(_dt);
     }
 

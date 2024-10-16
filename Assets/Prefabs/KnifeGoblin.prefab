@@ -116,14 +116,14 @@ RectTransform:
   m_GameObject: {fileID: 1579853824492686589}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8468394498338020874}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 54.008, y: -132.6665}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4185187191051611144
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 34c07d2ab9be3a345838c1a9571d7798, type: 3}
+  m_Sprite: {fileID: -1892895488, guid: 1fc8b18512f9baa49903057e1849925b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -198,7 +198,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 65}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1787591907933302306
@@ -236,7 +236,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 53, y: -5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5376841488506784919
@@ -311,7 +311,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 51, y: -50}
+  m_AnchoredPosition: {x: 0, y: 25}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4225088839112556481
@@ -331,7 +331,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2279869693406383645
 RectTransform:
   m_ObjectHideFlags: 0
@@ -349,7 +349,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -9, y: -71}
+  m_AnchoredPosition: {x: -50, y: 12}
   m_SizeDelta: {x: 166.5496, y: 139.5416}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &511678690257442139
@@ -424,7 +424,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 56, y: -6}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7390302991134515050
@@ -590,8 +590,9 @@ GameObject:
   - component: {fileID: 4530135215357092645}
   - component: {fileID: 5085065435411491819}
   - component: {fileID: 3667232987834262112}
+  - component: {fileID: 1373102060827233402}
   m_Layer: 5
-  m_Name: Goblin
+  m_Name: KnifeGoblin
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -634,7 +635,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackPattern:
   - Attack
-  - Defend
 --- !u!114 &6869075128165030927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -656,10 +656,12 @@ MonoBehaviour:
   bonusDefense: 0
   defenseIcon: {fileID: 4225088839112556481}
   defenseText: {fileID: 5398321193564746446}
-  damage: 8
+  damage: 2
   currentAttack: 
   counter: 0
   maxCounter: 0
+  flashTime: 0.25
+  Image: {fileID: 4510072630606928406}
 --- !u!114 &4530135215357092645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,7 +682,19 @@ MonoBehaviour:
       m_Calls: []
   hurt:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6869075128165030927}
+        m_TargetAssemblyTypeName: EnemyManager, Assembly-CSharp
+        m_MethodName: FlashRed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   outOfHealth:
     m_PersistentCalls:
       m_Calls:
@@ -696,8 +710,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  maxHealth: 20
-  currentHealth: 20
+  maxHealth: 10
+  currentHealth: 10
 --- !u!114 &5085065435411491819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -722,6 +736,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033721bb93a2ac742b618aad3dad6056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1373102060827233402
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6352491175659756240}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3931f09b62bf3fa4cad628d0b372a157, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6412102768827462758
 GameObject:
   m_ObjectHideFlags: 0
