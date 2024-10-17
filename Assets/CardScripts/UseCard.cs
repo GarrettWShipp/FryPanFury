@@ -7,16 +7,19 @@ public class UseCard : MonoBehaviour
 {
     public SimpleCardScript cardScript;
 
-    public PlayerManager playerManager;
+    private PlayerManager m_playerManager;
     [HideInInspector] public Health targetHealth;
-    [HideInInspector]public EnemyManager enemyManager;
+    [HideInInspector] public EnemyManager enemyManager;
     [HideInInspector] public CardManager cardManager;
 
     private int m_cardMana;
     private int m_playerMana;
 
-    private int m_cardAttack;
-    private int m_cardDefense;
+    [HideInInspector] public int cardAttack;
+    [HideInInspector] public int cardDefense;
+
+    private int m_tempAttack;
+    private int m_tempDefense;
     
     [HideInInspector] public InfoType infoType;
 
@@ -29,17 +32,25 @@ public class UseCard : MonoBehaviour
         infoType = cardScript.infoType;
         m_cardMana = cardScript.manaCost;
 
-        m_cardAttack = cardScript.attack;
-        m_cardDefense = cardScript.Defensive;
-        playerManager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
-        cardManager = GameObject.FindWithTag("CardManager").GetComponent<CardManager>();
+        cardAttack = cardScript.attack;
+        cardDefense = cardScript.Defensive;
+        
+    }
+    private void Start()
+    {
+        m_playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
+        cardManager = GameObject.FindGameObjectWithTag("CardManager").GetComponent<CardManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-            m_playerMana = playerManager.curMana;
+
+        if (m_playerManager == null) 
+        {
+            m_playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
+        }
+        m_playerMana = m_playerManager.curMana;
     }
 
     public void TryToPlayCard()
@@ -47,16 +58,35 @@ public class UseCard : MonoBehaviour
         Debug.Log("Tried to play card");
         if (m_playerMana >= m_cardMana)
         {
-
+            Debug.Log("Check " + enemyManager);
             if(infoType.attack == true)
             {
                 if (enemyManager.defense > 0)
                 {
-                    enemyManager.defense -= m_cardAttack;
+                    m_tempDefense = cardAttack - enemyManager.defense;
+                    m_tempAttack = cardAttack - enemyManager.defense;
+
+                    cardAttack = m_tempAttack;
+                    enemyManager.defense = m_tempDefense;
+                }
+                if(cardAttack < 0)
+                {
+                    cardAttack = 0;
                 }
                 if (enemyManager.defense <= 0)
                 {
-                    targetHealth.Damage(m_cardAttack + enemyManager.defense);
+                    enemyManager.defense = 0;
+                    if (m_playerManager.isDebuffed)
+                    {
+                        targetHealth.Damage(cardAttack / 2);
+                    }
+                    if (m_playerManager.isBuffed)
+                    {
+                        targetHealth.Damage(cardAttack * 2);
+                    }
+                    if (!m_playerManager.isBuffed && !m_playerManager.isDebuffed)
+                        targetHealth.Damage(cardAttack);
+                    Debug.Log("" +  cardAttack);
                 }
                 Debug.Log("Played card");
 
@@ -65,7 +95,7 @@ public class UseCard : MonoBehaviour
             if(infoType.deffense == true)
             {
 
-                playerManager.defense += m_cardDefense;
+                m_playerManager.defense += cardDefense;
                 Debug.Log("Played card");
 
                 cardManager.UseCard(gameObject);
@@ -86,7 +116,7 @@ public class UseCard : MonoBehaviour
                 return;
 
             }
-            playerManager.curMana -= m_cardMana;
+            m_playerManager.curMana -= m_cardMana;
         }
 
         if (m_playerMana < m_cardMana)

@@ -24,6 +24,10 @@ public class PlayersTurn : SimpleState
     public override void OnExit()
     {
         base.OnExit();
+        if(((CombatManager)stateMachine).playerManager.debuffCounter != 0)
+            ((CombatManager)stateMachine).playerManager.debuffCounter--;
+        if (((CombatManager)stateMachine).playerManager.buffCounter != 0)
+            ((CombatManager)stateMachine).playerManager.buffCounter--;
         Debug.Log("End turn");
         ((CombatManager)stateMachine).cardManager.DiscardAll();
     }

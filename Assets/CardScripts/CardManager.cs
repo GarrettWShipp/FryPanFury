@@ -14,11 +14,13 @@ public class CardManager : MonoBehaviour
     public TMP_Text deckText;
     public TMP_Text discardText;
     private int m_ranInt;
+    public GameObject cardBar;
 
     // Start is called before the first frame update
 
     private void Awake()
     {
+        cardBar = GameObject.FindGameObjectWithTag("Hand");
     }
     void Start()
     {

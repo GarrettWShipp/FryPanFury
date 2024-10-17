@@ -15,6 +15,7 @@ public class CardSlot : MonoBehaviour, IDropHandler
     {
         m_health = GetComponent<Health>();
     }
+
     public void OnDrop(PointerEventData _data) 
     {
         Debug.Log("OnDrop selected target is " + gameObject);
@@ -25,8 +26,10 @@ public class CardSlot : MonoBehaviour, IDropHandler
                 if (gameObject.tag == "Enemy")
                 {
                     m_enemyManager = GetComponent<EnemyManager>();
+                    _data.pointerDrag.GetComponent<UseCard>().enemyManager = m_enemyManager;
                     _data.pointerDrag.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
                    _data.pointerDrag.GetComponent<UseCard>().targetHealth = m_health;
+
                    _data.pointerDrag.GetComponent<DragnDrop>().use.TryToPlayCard();
                 }
             }

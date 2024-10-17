@@ -21,12 +21,21 @@ public class EnemyManager : MonoBehaviour
 
     public int damage;
 
-    private GameObject m_player;
+    private int m_tempAttack;
+    private int m_tempDefense;
+
+    private PlayerManager m_playerManager;
 
     private EnemyAttackPattern m_enemyAttackPattern;
     [HideInInspector] public string currentAttack;
     [HideInInspector] public int counter = 0;
     [HideInInspector] public int maxCounter;
+
+    public int debuffCounter;
+    public int buffCounter;
+
+    public bool isDebuffed = false;
+    public bool isBuffed = false;
 
     public float flashTime;
     Color origionalColor;
@@ -39,7 +48,7 @@ public class EnemyManager : MonoBehaviour
     void Start()
     {
         m_anim = GetComponent<Animator>();
-        m_player = GameObject.FindWithTag("Player");
+        m_playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
         m_health = this.GetComponent<Health>();
         m_enemyAttackPattern = this.GetComponent<EnemyAttackPattern>();
         maxCounter = m_enemyAttackPattern.attackPattern.Length;
@@ -86,11 +95,32 @@ public class EnemyManager : MonoBehaviour
         //Deal damage
         Debug.Log("Attack");
         m_anim.SetTrigger("Attack");
-        int dmg = damage - defense;
-        if (dmg > 0)
+
+        if(m_playerManager.defense > 0)
         {
-            m_player.GetComponent<Health>().Damage(dmg);
-            m_player.GetComponent<PlayerManager>().defense -= damage;
+            m_tempAttack = damage - m_playerManager.defense;
+            m_tempDefense = damage - m_playerManager.defense;
+
+            damage = m_tempAttack;
+            m_playerManager.defense = m_tempDefense;
+        }
+        if(damage < 0)
+        { 
+            damage = 0; 
+        }
+        if (m_playerManager.defense <= 0)
+        {
+            m_playerManager.defense = 0;
+            if(isDebuffed)
+            {
+                m_playerManager.GetComponent<Health>().Damage(damage / 2);
+            }
+            if (isBuffed)
+            {
+                m_playerManager.GetComponent<Health>().Damage(damage * 2);
+            }
+            if (!isDebuffed && !isBuffed)
+                m_playerManager.GetComponent<Health>().Damage(damage);
         }
         enemyAnimIsDone = false;
     }
@@ -104,13 +134,17 @@ public class EnemyManager : MonoBehaviour
 
     public void Debuff()
     {
-        //Makes playerManager Deal less damage
+        //Makes m_playerManager Deal less damage
         Debug.Log("Debuff");
+        m_playerManager.isDebuffed = true;
+        m_playerManager.debuffCounter += 3;
     }
     public void Buff()
     {
         //Makes enemy do more Damage
         Debug.Log("Buff");
+        isBuffed = true;
+        buffCounter += 3;
     }
     public void Heal()
     {

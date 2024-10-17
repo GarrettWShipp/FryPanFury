@@ -30,6 +30,7 @@ public class CardDisplay : MonoBehaviour
 
     private void Update()
     {
-        
+        attackText.text = card.attack.ToString();
+        defenseText.text = card.Defensive.ToString();
     }
 }

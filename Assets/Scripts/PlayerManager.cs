@@ -24,6 +24,13 @@ public class PlayerManager : MonoBehaviour
     public int mana;
 
     public int totalHandSize = 5;
+
+
+    public int debuffCounter;
+    public int buffCounter;
+
+    public bool isDebuffed = false;
+    public bool isBuffed = false;
     // Start is called before the first frame update
     void Awake()
     {
@@ -43,7 +50,14 @@ public class PlayerManager : MonoBehaviour
         healthSlider.maxValue = m_health.maxHealth;
         healthSlider.value = m_health.currentHealth;
         healthText.text = (int)m_health.currentHealth + "/" + (int)m_health.maxHealth;
-
+        if(debuffCounter == 0)
+        {
+            isDebuffed = false;
+        }
+        if (buffCounter == 0)
+        {
+            isBuffed = false;
+        }
         if (defense > 0)
         {
             defenseIcon.SetActive(true);

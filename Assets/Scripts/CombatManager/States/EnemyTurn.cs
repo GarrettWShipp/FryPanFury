@@ -14,6 +14,7 @@ public class EnemyTurn : SimpleState
         for (int i = 0; i < ((CombatManager)stateMachine).enemies.Length; i++)
         {
             ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().defense = 0;
+            
         }
     }
 

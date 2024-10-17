@@ -17,7 +17,7 @@ MonoBehaviour:
   cardImage: {fileID: 21300000, guid: fe3ffb9bfd2757e4c8af22fddf2efe59, type: 3}
   cardType: Attack
   manaCost: 1
-  attack: 2
+  attack: 4
   Defensive: 0
   infoType:
     attack: 1
