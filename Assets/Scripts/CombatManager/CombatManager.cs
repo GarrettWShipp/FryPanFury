@@ -16,13 +16,17 @@ public class CombatManager : SimpleStateMachine
     //Variables
     public GameObject[] enemies;
     public CardManager cardManager;
-    public PlayerManager playerManager;
-    public GameObject combatStatsMenu;
+    [HideInInspector] public PlayerManager playerManager;
+    public bool combatIsDone = false;
+    public GameObject combatStatMenu;
+    public GameObject nextButton;
+    public GameObject altNextButton;
 
     private void Awake()
     {
         states.Add(player);
         states.Add(enemy);
+        states.Add(endOfTurn);
         states.Add(finishCombat);
 
         foreach (SimpleState s in states)
@@ -32,6 +36,7 @@ public class CombatManager : SimpleStateMachine
     // Start is called before the first frame update
     void Start()
     {
+        playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
         ChangeState(nameof(PlayersTurn));
 
     }
@@ -40,18 +45,25 @@ public class CombatManager : SimpleStateMachine
     void Update()
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        GameObject[] gos;
-        gos = GameObject.FindGameObjectsWithTag("Enemy");
-        for (int i = 0; i >= gos.Length; i++)
+        if (enemies.Length == 0)
         {
-            if (gos[i].active == false)
+            combatIsDone = true;
+            return;
+        }
+        else
+        {
+            combatIsDone = false;
+            GameObject[] gos;
+            gos = GameObject.FindGameObjectsWithTag("Enemy");
+            for (int i = 0; i >= gos.Length; i++)
             {
-                enemies.Append(gos[i]);
+                if (gos[i].active == false)
+                {
+                    enemies.Append(gos[i]);
+                }
             }
         }
-        if (enemies.Length <= 0)
-        {
-            ChangeState(nameof(EndCombat));
-        }
+        
+        
     }
 }

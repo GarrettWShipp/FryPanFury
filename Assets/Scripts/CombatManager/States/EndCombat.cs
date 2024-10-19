@@ -12,7 +12,7 @@ public class EndCombat : SimpleState
     {
         Debug.Log("End Of Combat");
         base.OnStart();
-        ((CombatManager)stateMachine).combatStatsMenu.SetActive(true);
+        ((CombatManager)stateMachine).combatStatMenu.SetActive(true);
 
     }
 

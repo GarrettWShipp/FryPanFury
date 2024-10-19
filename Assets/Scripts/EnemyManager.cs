@@ -7,12 +7,18 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    public GameObject AttackedGFX;
+    public GameObject DefendedGFX;
+    public GameObject DebuffedGFX;
+    public GameObject BuffedGFX;
+
     public TMP_Text healthText;
     public Slider healthSlider;
 
     private Health m_health;
     public GameObject defending;
     public GameObject attacking;
+    public GameObject spell;
     public TMP_Text damageNum;
     public int defense;
     public int bonusDefense;
@@ -20,6 +26,9 @@ public class EnemyManager : MonoBehaviour
     public TMP_Text defenseText;
 
     public int damage;
+    private int m_ogDamage;
+    private int m_buffDamage;
+    private int m_debuffDamage;
 
     private int m_tempAttack;
     private int m_tempDefense;
@@ -27,15 +36,19 @@ public class EnemyManager : MonoBehaviour
     private PlayerManager m_playerManager;
 
     private EnemyAttackPattern m_enemyAttackPattern;
+    [HideInInspector] public string nextAttack;
     [HideInInspector] public string currentAttack;
     [HideInInspector] public int counter = 0;
     [HideInInspector] public int maxCounter;
+    [HideInInspector] public int moveIndex;
 
     public int debuffCounter;
     public int buffCounter;
 
     public bool isDebuffed = false;
     public bool isBuffed = false;
+    public GameObject BuffGFX;
+    public GameObject DebuffGFX;
 
     public float flashTime;
     Color origionalColor;
@@ -53,15 +66,32 @@ public class EnemyManager : MonoBehaviour
         m_enemyAttackPattern = this.GetComponent<EnemyAttackPattern>();
         maxCounter = m_enemyAttackPattern.attackPattern.Length;
         origionalColor = Image.color;
+        m_buffDamage = damage * 2;
+        m_debuffDamage = damage / 2;
+        m_ogDamage = damage;
+
+        if(AttackedGFX == null)
+        {
+            AttackedGFX = new GameObject("Attack");
+        }
+        if (DefendedGFX == null)
+        {
+            DefendedGFX = new GameObject("Defend");
+        }
+        if (DebuffedGFX == null)
+        {
+            DebuffedGFX = new GameObject("Debuff");
+        }
+        if (BuffedGFX == null)
+        {
+            BuffedGFX = new GameObject("Buff");
+        }
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        damageNum.text = damage.ToString();
-
         healthSlider.maxValue = m_health.maxHealth;
 
         healthText.text = (int)m_health.currentHealth + "/" + (int)m_health.maxHealth;
@@ -69,24 +99,50 @@ public class EnemyManager : MonoBehaviour
         healthSlider.value = m_health.currentHealth;
         //healthText.text = m_health.currentHealth.ToString();
 
-        if(defense > 0)
+        if (defense > 0)
         {
             defenseIcon.SetActive(true);
             defenseText.text = defense.ToString();
-
         }
         else
         {
             defenseIcon.SetActive(false);
         }
 
-        if(counter + 1 > maxCounter)
+        if (counter + 1 > maxCounter)
         {
-            currentAttack = m_enemyAttackPattern.attackPattern[0];
+            moveIndex = counter - 1;
+            nextAttack = m_enemyAttackPattern.attackPattern[0];
+            currentAttack = m_enemyAttackPattern.attackPattern[maxCounter - 1];
         }
         else
         {
-            currentAttack = m_enemyAttackPattern.attackPattern[counter];
+            moveIndex = counter - 1;
+            if(moveIndex < 0)
+            {
+                moveIndex = 0;
+            }
+            nextAttack = m_enemyAttackPattern.attackPattern[counter];
+            currentAttack = m_enemyAttackPattern.attackPattern[moveIndex];
+        }
+        if (isBuffed)
+        {
+            BuffGFX.SetActive(true);
+            damage = m_buffDamage;
+            damageNum.text = m_buffDamage.ToString();
+        }
+        if (isDebuffed)
+        {
+            DebuffGFX.SetActive(true);
+            damage = m_debuffDamage;
+            damageNum.text = m_debuffDamage.ToString();
+        }
+        if (!isBuffed && !isDebuffed)
+        {
+            DebuffGFX.SetActive(false);
+            BuffGFX.SetActive(false);
+            damage = m_ogDamage;
+            damageNum.text = damage.ToString();
         }
     }
 
@@ -99,7 +155,7 @@ public class EnemyManager : MonoBehaviour
         if(m_playerManager.defense > 0)
         {
             m_tempAttack = damage - m_playerManager.defense;
-            m_tempDefense = damage - m_playerManager.defense;
+            m_tempDefense = m_playerManager.defense - damage;
 
             damage = m_tempAttack;
             m_playerManager.defense = m_tempDefense;
@@ -113,11 +169,11 @@ public class EnemyManager : MonoBehaviour
             m_playerManager.defense = 0;
             if(isDebuffed)
             {
-                m_playerManager.GetComponent<Health>().Damage(damage / 2);
+                m_playerManager.GetComponent<Health>().Damage(damage);
             }
             if (isBuffed)
             {
-                m_playerManager.GetComponent<Health>().Damage(damage * 2);
+                m_playerManager.GetComponent<Health>().Damage(damage);
             }
             if (!isDebuffed && !isBuffed)
                 m_playerManager.GetComponent<Health>().Damage(damage);
@@ -145,11 +201,6 @@ public class EnemyManager : MonoBehaviour
         Debug.Log("Buff");
         isBuffed = true;
         buffCounter += 3;
-    }
-    public void Heal()
-    {
-        //Heal lowest Enemy
-        Debug.Log("Heal");
     }
 
     public void FlashRed()

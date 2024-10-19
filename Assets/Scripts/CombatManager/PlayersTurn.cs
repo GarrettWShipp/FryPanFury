@@ -10,6 +10,7 @@ public class PlayersTurn : SimpleState
 {
     public override void OnStart()
     {
+        Debug.Log("Players turn");
         base.OnStart();
         ((CombatManager)stateMachine).playerManager.curMana = ((CombatManager)stateMachine).playerManager.mana;
         ((CombatManager)stateMachine).playerManager.defense = 0;
@@ -19,6 +20,10 @@ public class PlayersTurn : SimpleState
     public override void UpdateState(float _dt)
     {
         base.UpdateState(_dt);
+        if (((CombatManager)stateMachine).combatIsDone)
+        {
+            ((CombatManager)stateMachine).ChangeState(nameof(EndCombat));
+        }
     }
 
     public override void OnExit()

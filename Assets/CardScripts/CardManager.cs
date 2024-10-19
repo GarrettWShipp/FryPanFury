@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
 public class CardManager : MonoBehaviour
 {
     //private AudioManager m_audio;
@@ -10,11 +12,12 @@ public class CardManager : MonoBehaviour
     public List<GameObject> Discard;
     public Animator anim;
     public bool animIsDone = false;
-    public int m_drawCount;
+    public int drawCount;
     public TMP_Text deckText;
     public TMP_Text discardText;
     private int m_ranInt;
     public GameObject cardBar;
+    public Button NextButton;
 
     // Start is called before the first frame update
 
@@ -42,11 +45,33 @@ public class CardManager : MonoBehaviour
             Deck.RemoveAt(m_ranInt);
             animIsDone = false;
             //AudioManager.instance.PlaySFX("Draw");
-            m_drawCount -= 1;
+            drawCount -= 1;
         }
-        if(m_drawCount != 0)
+        if(drawCount != 0)
         {
-            DrawCard(m_drawCount);
+            DrawCard(drawCount);
+        }
+        if(drawCount == 0)
+        {
+            NextButton.interactable = true;
+            for(int i = 0; i < Hand.Count; i++)
+            {
+                if (Hand[i].GetComponent<UseCard>().beingDragged == false)
+                {
+                    Hand[i].GetComponent<CanvasGroup>().blocksRaycasts = true;
+                }
+                else
+                    Hand[i].GetComponent<CanvasGroup>().blocksRaycasts = false;
+
+            }
+        }
+        else
+        {
+            NextButton.interactable = false;
+            for (int i = 0; i < Hand.Count; i++)
+            {
+                Hand[i].GetComponent<CanvasGroup>().blocksRaycasts = false;
+            }
         }
 
     }
@@ -60,7 +85,7 @@ public class CardManager : MonoBehaviour
     public void DrawCard(int _drawAmount)
     {
         m_ranInt = Random.Range(0, Deck.Count);
-        m_drawCount = _drawAmount;
+        drawCount = _drawAmount;
         if(Deck.Count == 0)
         {
             ReshuffleCards();

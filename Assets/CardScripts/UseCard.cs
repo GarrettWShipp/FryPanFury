@@ -16,7 +16,10 @@ public class UseCard : MonoBehaviour
     private int m_playerMana;
 
     [HideInInspector] public int cardAttack;
+    [HideInInspector] public int cardAttackBuffed;
+    [HideInInspector] public int cardAttackDebuffed;
     [HideInInspector] public int cardDefense;
+    [HideInInspector] public bool beingDragged;
 
     private int m_tempAttack;
     private int m_tempDefense;
@@ -40,6 +43,8 @@ public class UseCard : MonoBehaviour
     {
         m_playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
         cardManager = GameObject.FindGameObjectWithTag("CardManager").GetComponent<CardManager>();
+        cardAttackDebuffed = cardAttack / 2;
+        cardAttackBuffed = cardAttack * 2;
     }
 
     // Update is called once per frame
@@ -51,6 +56,23 @@ public class UseCard : MonoBehaviour
             m_playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
         }
         m_playerMana = m_playerManager.curMana;
+        if (m_playerManager.isBuffed)
+        {
+            cardAttack = cardAttackBuffed;
+        }
+        else
+        {
+            cardAttack = cardScript.attack;
+        }
+
+        if (m_playerManager.isDebuffed)
+        {
+            cardAttack = cardAttackDebuffed;
+        }
+        else
+        {
+            cardAttack = cardScript.attack;
+        }
     }
 
     public void TryToPlayCard()
@@ -63,7 +85,7 @@ public class UseCard : MonoBehaviour
             {
                 if (enemyManager.defense > 0)
                 {
-                    m_tempDefense = cardAttack - enemyManager.defense;
+                    m_tempDefense = enemyManager.defense - cardAttack;
                     m_tempAttack = cardAttack - enemyManager.defense;
 
                     cardAttack = m_tempAttack;
@@ -78,11 +100,11 @@ public class UseCard : MonoBehaviour
                     enemyManager.defense = 0;
                     if (m_playerManager.isDebuffed)
                     {
-                        targetHealth.Damage(cardAttack / 2);
+                        targetHealth.Damage(cardAttack);
                     }
                     if (m_playerManager.isBuffed)
                     {
-                        targetHealth.Damage(cardAttack * 2);
+                        targetHealth.Damage(cardAttack);
                     }
                     if (!m_playerManager.isBuffed && !m_playerManager.isDebuffed)
                         targetHealth.Damage(cardAttack);

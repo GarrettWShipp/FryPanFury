@@ -22,9 +22,11 @@ public class DragnDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public void OnBeginDrag(PointerEventData _data)
     {
         Debug.Log("OnBeginDrag");
+        use.beingDragged = true;
         m_startPos = GetComponent<RectTransform>().position;
         m_canvasGroup.alpha = .6f;
         m_canvasGroup.blocksRaycasts = false;
+        
     }
 
     public void OnDrag(PointerEventData _data)
@@ -36,9 +38,11 @@ public class DragnDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public void OnEndDrag(PointerEventData _data)
     {
         Debug.Log("OnEndDrag");
+        use.beingDragged = false;
         m_canvasGroup.alpha = 1f;
         GetComponent<RectTransform>().position = m_startPos;
         m_canvasGroup.blocksRaycasts = true;
+        
 
     }
 

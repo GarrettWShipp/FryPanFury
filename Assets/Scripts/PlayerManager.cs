@@ -31,12 +31,20 @@ public class PlayerManager : MonoBehaviour
 
     public bool isDebuffed = false;
     public bool isBuffed = false;
+
+    public GameObject BuffGFX;
+    public GameObject DebuffGFX;
+
+    public float flashTime;
+    Color origionalColor;
+    public Image Image;
     // Start is called before the first frame update
     void Awake()
     {
-        
+
         curMana = mana;
         m_health = this.GetComponent<Health>();
+        origionalColor = Image.color;
     }
 
     // Update is called once per frame
@@ -73,5 +81,27 @@ public class PlayerManager : MonoBehaviour
         {
             Debug.Log("Out of mana");
         }
+        if (isBuffed)
+        {
+            BuffGFX.SetActive(true);
+        }
+        else
+            BuffGFX.SetActive(false);
+        if (isDebuffed)
+        {
+            DebuffGFX.SetActive(true);
+        }
+        else
+            DebuffGFX.SetActive(false);
+
+    }
+    public void FlashRed()
+    {
+        Image.color = Color.red;
+        Invoke("ResetColor", flashTime);
+    }
+    public void ResetColor()
+    {
+        Image.color = origionalColor;
     }
 }
