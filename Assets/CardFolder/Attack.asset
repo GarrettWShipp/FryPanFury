@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Attack
   m_EditorClassIdentifier: 
   name: Cast Iron
-  description: Hit Enemy with your pan dealing 5 damage
+  description: you use your iron pan to cast iron on your target
   cardImage: {fileID: 21300000, guid: fe3ffb9bfd2757e4c8af22fddf2efe59, type: 3}
   cardType: Attack
   manaCost: 1
-  attack: 5
+  attack: 6
   Defensive: 0
   infoType:
     attack: 1

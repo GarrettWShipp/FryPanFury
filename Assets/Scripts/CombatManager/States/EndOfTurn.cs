@@ -49,10 +49,7 @@ public class EndOfTurn : SimpleState
         base.OnExit();
         for (int i = 0; i < ((CombatManager)stateMachine).enemies.Length; i++)
         {
-            ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().AttackedGFX.SetActive(false);
-            ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().DefendedGFX.SetActive(false);
-            ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().DebuffedGFX.SetActive(false);
-            ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().BuffedGFX.SetActive(false);
+
         }
         
 

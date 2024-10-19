@@ -1330,10 +1330,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d824ec7b6fb24f409edf7fe68ef7c20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackedGFX: {fileID: 6887757816616259370}
-  DefendedGFX: {fileID: 0}
-  DebuffedGFX: {fileID: 0}
-  BuffedGFX: {fileID: 0}
   healthText: {fileID: 7494783445974545748}
   healthSlider: {fileID: 5453416025130997308}
   defending: {fileID: 4376679222345145975}
@@ -1344,12 +1340,11 @@ MonoBehaviour:
   bonusDefense: 0
   defenseIcon: {fileID: 4225088839112556481}
   defenseText: {fileID: 5398321193564746446}
-  damage: 2
+  damage: 3
   nextAttack: 
   currentAttack: 
   counter: 0
   maxCounter: 0
-  moveIndex: 0
   debuffCounter: 0
   buffCounter: 0
   isDebuffed: 0

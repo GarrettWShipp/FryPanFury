@@ -7,11 +7,6 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    public GameObject AttackedGFX;
-    public GameObject DefendedGFX;
-    public GameObject DebuffedGFX;
-    public GameObject BuffedGFX;
-
     public TMP_Text healthText;
     public Slider healthSlider;
 
@@ -40,7 +35,6 @@ public class EnemyManager : MonoBehaviour
     [HideInInspector] public string currentAttack;
     [HideInInspector] public int counter = 0;
     [HideInInspector] public int maxCounter;
-    [HideInInspector] public int moveIndex;
 
     public int debuffCounter;
     public int buffCounter;
@@ -70,23 +64,6 @@ public class EnemyManager : MonoBehaviour
         m_debuffDamage = damage / 2;
         m_ogDamage = damage;
 
-        if(AttackedGFX == null)
-        {
-            AttackedGFX = new GameObject("Attack");
-        }
-        if (DefendedGFX == null)
-        {
-            DefendedGFX = new GameObject("Defend");
-        }
-        if (DebuffedGFX == null)
-        {
-            DebuffedGFX = new GameObject("Debuff");
-        }
-        if (BuffedGFX == null)
-        {
-            BuffedGFX = new GameObject("Buff");
-        }
-
     }
 
     // Update is called once per frame
@@ -111,19 +88,12 @@ public class EnemyManager : MonoBehaviour
 
         if (counter + 1 > maxCounter)
         {
-            moveIndex = counter - 1;
             nextAttack = m_enemyAttackPattern.attackPattern[0];
             currentAttack = m_enemyAttackPattern.attackPattern[maxCounter - 1];
         }
         else
         {
-            moveIndex = counter - 1;
-            if(moveIndex < 0)
-            {
-                moveIndex = 0;
-            }
             nextAttack = m_enemyAttackPattern.attackPattern[counter];
-            currentAttack = m_enemyAttackPattern.attackPattern[moveIndex];
         }
         if (isBuffed)
         {

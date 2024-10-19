@@ -25,25 +25,21 @@ public class EnemyTurn : SimpleState
             if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().nextAttack == "Attack")
             {
                 ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().Attack();
-                ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().AttackedGFX.SetActive(true);
                 ((CombatManager)stateMachine).ChangeState(nameof(EndOfTurn));
             }
             if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().nextAttack == "Defend")
             {
                 ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().Defend();
-                ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().DefendedGFX.SetActive(true);
                 ((CombatManager)stateMachine).ChangeState(nameof(EndOfTurn));
             }
             if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().nextAttack == "Buff")
             {
                 ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().Buff();
-                ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().BuffedGFX.SetActive(true);
                 ((CombatManager)stateMachine).ChangeState(nameof(EndOfTurn));
             }
             if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().nextAttack == "Debuff")
             {
                 ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().Debuff();
-                ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().DebuffedGFX.SetActive(true);
                 ((CombatManager)stateMachine).ChangeState(nameof(EndOfTurn));
             }
             

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class CardSlot : MonoBehaviour, IDropHandler
 {
@@ -45,6 +46,7 @@ public class CardSlot : MonoBehaviour, IDropHandler
            
 
         }
+        _data.pointerDrag.GetComponent<UseCard>().beingDragged = false;
         _data.pointerDrag.GetComponent<CanvasGroup>().alpha = 1.0f;
         _data.pointerDrag.GetComponent<CanvasGroup>().blocksRaycasts = true;
     }

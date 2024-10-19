@@ -360,8 +360,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackPattern:
   - Debuff
-  - Defend
   - Buff
+  - Defend
   - Attack
 --- !u!114 &2049347845312019164
 MonoBehaviour:
@@ -382,10 +382,11 @@ MonoBehaviour:
   spell: {fileID: 8681081214822370873}
   damageNum: {fileID: 8607475377081019213}
   defense: 0
-  bonusDefense: 3
+  bonusDefense: 4
   defenseIcon: {fileID: 5193606665902542481}
   defenseText: {fileID: 6468022880536764334}
   damage: 6
+  nextAttack: 
   currentAttack: 
   counter: 0
   maxCounter: 0
