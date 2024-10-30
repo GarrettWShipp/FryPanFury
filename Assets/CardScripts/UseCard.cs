@@ -23,10 +23,9 @@ public class UseCard : MonoBehaviour
 
     private int m_tempAttack;
     private int m_tempDefense;
-    
+
     [HideInInspector] public InfoType infoType;
 
-    public GameObject hand;
 
 
     // Start is called before the first frame update
@@ -114,7 +113,7 @@ public class UseCard : MonoBehaviour
 
                 cardManager.UseCard(gameObject);
             }
-            if(infoType.deffense == true)
+            if(infoType.defense == true)
             {
 
                 m_playerManager.defense += cardDefense;

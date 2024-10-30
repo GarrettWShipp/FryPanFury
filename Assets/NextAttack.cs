@@ -14,30 +14,25 @@ public class NextAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(m_enemyManager.nextAttack == "Attack")
+        if(m_enemyManager.nextMove.infoType.attack)
         {
             m_enemyManager.attacking.SetActive(true);
         }
         else
             m_enemyManager.attacking.SetActive(false);
 
-        if (m_enemyManager.nextAttack == "Defend")
+        if (m_enemyManager.nextMove.infoType.defense)
         {
             m_enemyManager.defending.SetActive(true);
         }
         else
             m_enemyManager.defending.SetActive(false);
 
-        if (m_enemyManager.nextAttack == "Buff" || m_enemyManager.nextAttack == "Debuff")
+        if (m_enemyManager.nextMove.infoType.debuff || m_enemyManager.nextMove.infoType.buff)
         {
             m_enemyManager.spell.SetActive(true);
         }
         else
             m_enemyManager.spell.SetActive(false);
-
-        if (m_enemyManager.nextAttack == "Heal")
-        {
-
-        }
     }
 }

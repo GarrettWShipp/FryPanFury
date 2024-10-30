@@ -6,7 +6,7 @@ using UnityEngine;
 public class InfoType
 {
     public bool attack;
-    public bool deffense;
+    public bool defense;
     public bool debuff;
     public bool buff;
 }

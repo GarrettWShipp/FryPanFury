@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using SuperPupSystems.Helper;
 using SuperPupSystems.StateMachine;
-using System.Linq;
 
 [System.Serializable]
 public class EnemyTurn : SimpleState
@@ -22,22 +21,22 @@ public class EnemyTurn : SimpleState
     {
         for (int i = 0; i < ((CombatManager)stateMachine).enemies.Length; i++)
         {
-            if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().nextAttack == "Attack")
+            if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().infoType.attack)
             {
                 ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().Attack();
                 ((CombatManager)stateMachine).ChangeState(nameof(EndOfTurn));
             }
-            if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().nextAttack == "Defend")
+            if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().infoType.defense)
             {
                 ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().Defend();
                 ((CombatManager)stateMachine).ChangeState(nameof(EndOfTurn));
             }
-            if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().nextAttack == "Buff")
+            if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().infoType.buff)
             {
                 ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().Buff();
                 ((CombatManager)stateMachine).ChangeState(nameof(EndOfTurn));
             }
-            if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().nextAttack == "Debuff")
+            if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().infoType.debuff)
             {
                 ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().Debuff();
                 ((CombatManager)stateMachine).ChangeState(nameof(EndOfTurn));
@@ -56,12 +55,7 @@ public class EnemyTurn : SimpleState
     {
         for (int i = 0; i < ((CombatManager)stateMachine).enemies.Length; i++)
         {
-            if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().counter == ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().maxCounter + 1)
-            {
-                ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().counter = 0;
-            }
-            else
-                ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().counter++;
+            ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().movelist = ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().Shift(((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().movelist);
         }
         base.OnExit();
     }

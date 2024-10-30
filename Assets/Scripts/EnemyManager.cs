@@ -1,9 +1,8 @@
-using UnityEngine.UI;
 using SuperPupSystems.Helper;
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -30,9 +29,7 @@ public class EnemyManager : MonoBehaviour
 
     private PlayerManager m_playerManager;
 
-    private EnemyAttackPattern m_enemyAttackPattern;
-    [HideInInspector] public string nextAttack;
-    [HideInInspector] public string currentAttack;
+    [HideInInspector] public EnemyAttackPattern enemyMovePattern;
     [HideInInspector] public int counter = 0;
     [HideInInspector] public int maxCounter;
 
@@ -51,24 +48,32 @@ public class EnemyManager : MonoBehaviour
     private Animator m_anim;
     public bool enemyAnimIsDone = false;
 
+    [HideInInspector] public InfoType infoType;
+    [HideInInspector] public SimpleCardScript[] movelist;
+
+    [HideInInspector] public SimpleCardScript nextMove;
+
     // Start is called before the first frame update
     void Start()
     {
         m_anim = GetComponent<Animator>();
         m_playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
         m_health = this.GetComponent<Health>();
-        m_enemyAttackPattern = this.GetComponent<EnemyAttackPattern>();
-        maxCounter = m_enemyAttackPattern.attackPattern.Length;
+        enemyMovePattern = this.GetComponent<EnemyAttackPattern>();
         origionalColor = Image.color;
         m_buffDamage = damage * 2;
         m_debuffDamage = damage / 2;
         m_ogDamage = damage;
+        movelist = enemyMovePattern.EnemyCards;
 
+        nextMove = movelist[0];
     }
 
     // Update is called once per frame
     void Update()
     {
+        nextMove = movelist[0];
+        
         healthSlider.maxValue = m_health.maxHealth;
 
         healthText.text = (int)m_health.currentHealth + "/" + (int)m_health.maxHealth;
@@ -86,15 +91,10 @@ public class EnemyManager : MonoBehaviour
             defenseIcon.SetActive(false);
         }
 
-        if (counter + 1 > maxCounter)
-        {
-            nextAttack = m_enemyAttackPattern.attackPattern[0];
-            currentAttack = m_enemyAttackPattern.attackPattern[maxCounter - 1];
-        }
-        else
-        {
-            nextAttack = m_enemyAttackPattern.attackPattern[counter];
-        }
+        
+        infoType = movelist[0].infoType;
+        
+        
         if (isBuffed)
         {
             BuffGFX.SetActive(true);
@@ -186,5 +186,20 @@ public class EnemyManager : MonoBehaviour
     public void AnimTrigger()
     {
         enemyAnimIsDone = true;
+    }
+
+    public SimpleCardScript[] Shift(SimpleCardScript[] myArray)
+    {
+        Debug.Log("Shift" + myArray[0]);
+        SimpleCardScript[] tArray = new SimpleCardScript[myArray.Length];
+        for (int i = 0; i < myArray.Length; i++)
+        {
+            if (i < myArray.Length - 1)
+                tArray[i] = myArray[i + 1];
+            else
+                tArray[i] = myArray[0];
+        }
+        Debug.Log("done shift" + tArray[0]);
+        return tArray;
     }
 }

@@ -21,6 +21,10 @@ public class CombatManager : SimpleStateMachine
     public GameObject combatStatMenu;
     public GameObject nextButton;
     public GameObject altNextButton;
+    public GameObject enemyCard;
+    private GameObject m_enemyMoves;
+    private int counter = 0;
+    [HideInInspector] public GameObject[] enemyCards;
 
     private void Awake()
     {
@@ -38,6 +42,7 @@ public class CombatManager : SimpleStateMachine
     {
         playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
         ChangeState(nameof(PlayersTurn));
+        m_enemyMoves = GameObject.FindWithTag("EnemyMove");
 
     }
 
@@ -63,7 +68,20 @@ public class CombatManager : SimpleStateMachine
                 }
             }
         }
+
+        enemyCards = GameObject.FindGameObjectsWithTag("EnemyCards");
         
-        
+    }
+    public void EnemyMoveSpawnCard()
+    {
+        if (enemies.Length - 1 == counter)
+        {
+            Instantiate(enemyCard, m_enemyMoves.transform);
+            counter++;
+        }
+    }
+    public void DestroyGameObject(GameObject gameObject)
+    {
+        Destroy(gameObject);
     }
 }

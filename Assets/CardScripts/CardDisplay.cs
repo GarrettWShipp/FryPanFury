@@ -34,6 +34,7 @@ public class CardDisplay : MonoBehaviour
 
     private void Update()
     {
+        if (m_card != null)
             attackText.text = m_card.cardAttack.ToString();
     }
 }

@@ -10,6 +10,8 @@ TagManager:
   - Enemy
   - CardManager
   - Hand
+  - EnemyMove
+  - EnemyCards
   layers:
   - Default
   - TransparentFX
