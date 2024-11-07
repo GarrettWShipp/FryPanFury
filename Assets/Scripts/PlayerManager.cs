@@ -32,6 +32,9 @@ public class PlayerManager : MonoBehaviour
     public bool isDebuffed = false;
     public bool isBuffed = false;
 
+    public int buffvalue = 2;
+    public int debuffvalue = 2;
+
     public GameObject BuffGFX;
     public GameObject DebuffGFX;
 

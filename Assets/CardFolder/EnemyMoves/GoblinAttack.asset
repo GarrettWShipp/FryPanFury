@@ -14,13 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Shank
   description: The goblin stabs you with there knife
-  cardImage: {fileID: 21300000, guid: fe3ffb9bfd2757e4c8af22fddf2efe59, type: 3}
-  cardType: Attack
-  manaCost: 1
-  attack: 6
+  cardImage: {fileID: -535913414, guid: 1fc8b18512f9baa49903057e1849925b, type: 3}
+  manaCost: 0
+  attack: 0
   Defensive: 0
   infoType:
     attack: 1
-    deffense: 0
+    defense: 0
     debuff: 0
     buff: 0

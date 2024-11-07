@@ -74,11 +74,7 @@ public class CombatManager : SimpleStateMachine
     }
     public void EnemyMoveSpawnCard()
     {
-        if (enemies.Length - 1 == counter)
-        {
-            Instantiate(enemyCard, m_enemyMoves.transform);
-            counter++;
-        }
+        Instantiate(enemyCard, m_enemyMoves.transform);
     }
     public void DestroyGameObject(GameObject gameObject)
     {

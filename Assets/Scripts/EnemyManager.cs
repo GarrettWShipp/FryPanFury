@@ -21,8 +21,8 @@ public class EnemyManager : MonoBehaviour
 
     public int damage;
     private int m_ogDamage;
-    private int m_buffDamage;
-    private int m_debuffDamage;
+    private int m_buffValue = 2;
+    private int m_debuffValue = 2;
 
     private int m_tempAttack;
     private int m_tempDefense;
@@ -61,8 +61,6 @@ public class EnemyManager : MonoBehaviour
         m_health = this.GetComponent<Health>();
         enemyMovePattern = this.GetComponent<EnemyAttackPattern>();
         origionalColor = Image.color;
-        m_buffDamage = damage * 2;
-        m_debuffDamage = damage / 2;
         m_ogDamage = damage;
         movelist = enemyMovePattern.EnemyCards;
 
@@ -72,6 +70,7 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        damageNum.text = damage.ToString();
         nextMove = movelist[0];
         
         healthSlider.maxValue = m_health.maxHealth;
@@ -98,22 +97,27 @@ public class EnemyManager : MonoBehaviour
         if (isBuffed)
         {
             BuffGFX.SetActive(true);
-            damage = m_buffDamage;
-            damageNum.text = m_buffDamage.ToString();
+            damage = damage * m_buffValue;
+            
         }
+        else
+        {
+            BuffGFX.SetActive(false);
+            damage = m_ogDamage;
+        }
+
         if (isDebuffed)
         {
             DebuffGFX.SetActive(true);
-            damage = m_debuffDamage;
-            damageNum.text = m_debuffDamage.ToString();
+            damage = damage / m_debuffValue;
+            
         }
-        if (!isBuffed && !isDebuffed)
+        else
         {
             DebuffGFX.SetActive(false);
-            BuffGFX.SetActive(false);
             damage = m_ogDamage;
-            damageNum.text = damage.ToString();
         }
+        
     }
 
     public void Attack()
@@ -162,6 +166,7 @@ public class EnemyManager : MonoBehaviour
     {
         //Makes m_playerManager Deal less damage
         Debug.Log("Debuff");
+        m_anim.SetTrigger("Spell");
         m_playerManager.isDebuffed = true;
         m_playerManager.debuffCounter += 3;
     }
@@ -169,6 +174,7 @@ public class EnemyManager : MonoBehaviour
     {
         //Makes enemy do more Damage
         Debug.Log("Buff");
+        m_anim.SetTrigger("Spell");
         isBuffed = true;
         buffCounter += 3;
     }

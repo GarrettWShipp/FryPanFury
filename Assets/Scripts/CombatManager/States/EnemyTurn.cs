@@ -24,25 +24,26 @@ public class EnemyTurn : SimpleState
             if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().infoType.attack)
             {
                 ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().Attack();
-                ((CombatManager)stateMachine).ChangeState(nameof(EndOfTurn));
+                
             }
             if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().infoType.defense)
             {
                 ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().Defend();
-                ((CombatManager)stateMachine).ChangeState(nameof(EndOfTurn));
+                
             }
             if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().infoType.buff)
             {
                 ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().Buff();
-                ((CombatManager)stateMachine).ChangeState(nameof(EndOfTurn));
+                
             }
             if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().infoType.debuff)
             {
                 ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().Debuff();
-                ((CombatManager)stateMachine).ChangeState(nameof(EndOfTurn));
+                
             }
             
         }
+        ((CombatManager)stateMachine).ChangeState(nameof(EndOfTurn));
 
         if (((CombatManager)stateMachine).combatIsDone)
         {

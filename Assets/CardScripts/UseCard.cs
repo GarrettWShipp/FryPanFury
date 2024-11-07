@@ -36,14 +36,14 @@ public class UseCard : MonoBehaviour
 
         cardAttack = cardScript.attack;
         cardDefense = cardScript.Defensive;
-        
+
     }
     private void Start()
     {
         m_playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
         cardManager = GameObject.FindGameObjectWithTag("CardManager").GetComponent<CardManager>();
-        cardAttackDebuffed = cardAttack / 2;
-        cardAttackBuffed = cardAttack * 2;
+        cardAttackBuffed = cardAttack * m_playerManager.buffvalue;
+        cardAttackDebuffed = cardAttack / m_playerManager.debuffvalue;
     }
 
     // Update is called once per frame
@@ -55,20 +55,21 @@ public class UseCard : MonoBehaviour
             m_playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
         }
         m_playerMana = m_playerManager.curMana;
-        if (m_playerManager.isBuffed)
+        if (m_playerManager.isBuffed )
         {
             cardAttack = cardAttackBuffed;
         }
-        else
-        {
-            cardAttack = cardScript.attack;
-        }
-
         if (m_playerManager.isDebuffed)
         {
             cardAttack = cardAttackDebuffed;
         }
-        else
+
+        if(m_playerManager.isBuffed && m_playerManager.isDebuffed)
+        {
+            cardAttack = cardScript.attack;
+        }
+
+        if (!m_playerManager.isBuffed && !m_playerManager.isDebuffed)
         {
             cardAttack = cardScript.attack;
         }
@@ -97,16 +98,7 @@ public class UseCard : MonoBehaviour
                 if (enemyManager.defense <= 0)
                 {
                     enemyManager.defense = 0;
-                    if (m_playerManager.isDebuffed)
-                    {
-                        targetHealth.Damage(cardAttack);
-                    }
-                    if (m_playerManager.isBuffed)
-                    {
-                        targetHealth.Damage(cardAttack);
-                    }
-                    if (!m_playerManager.isBuffed && !m_playerManager.isDebuffed)
-                        targetHealth.Damage(cardAttack);
+                    targetHealth.Damage(cardAttack);
                     Debug.Log("" +  cardAttack);
                 }
                 Debug.Log("Played card");
@@ -125,16 +117,16 @@ public class UseCard : MonoBehaviour
             if(infoType.buff == true)
             {
                 Debug.Log("Played card");
-
+                m_playerManager.isBuffed = true;
+                m_playerManager.buffCounter += 3;
                 cardManager.UseCard(gameObject);
-                return;
             }
             if (infoType.debuff == true)
             {
                 Debug.Log("Played card");
-
+                enemyManager.isDebuffed = true;
+                enemyManager.debuffCounter += 3;
                 cardManager.UseCard(gameObject);
-                return;
 
             }
             m_playerManager.curMana -= m_cardMana;

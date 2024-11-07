@@ -172,7 +172,7 @@ MonoBehaviour:
   m_fontSizeBase: 38.29
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 16
+  m_fontSizeMin: 14.3
   m_fontSizeMax: 40
   m_fontStyle: 0
   m_HorizontalAlignment: 1
@@ -584,11 +584,11 @@ GameObject:
   - component: {fileID: 818817524949724790}
   m_Layer: 5
   m_Name: DefendCard
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3177857526799206842
 RectTransform:
   m_ObjectHideFlags: 0
@@ -629,11 +629,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardScript: {fileID: 11400000, guid: 999d9078d4c92284697174a4f92c55ca, type: 2}
-  player: {fileID: 0}
   targetHealth: {fileID: 0}
   enemyManager: {fileID: 0}
-  card: {fileID: 0}
   cardManager: {fileID: 0}
+  cardAttack: 0
+  cardAttackBuffed: 0
+  cardAttackDebuffed: 0
+  cardDefense: 0
+  beingDragged: 0
+  infoType:
+    attack: 0
+    defense: 0
+    debuff: 0
+    buff: 0
 --- !u!114 &8386844154335436071
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -41,8 +42,8 @@ public class CardManager : MonoBehaviour
         {
             GameObject card = Deck[m_ranInt];
             Hand.Add(card);
-            card.SetActive(true);
             Deck.RemoveAt(m_ranInt);
+            Instantiate(card, cardBar.transform);
             animIsDone = false;
             //AudioManager.instance.PlaySFX("Draw");
             drawCount -= 1;
@@ -98,9 +99,10 @@ public class CardManager : MonoBehaviour
 
     public void UseCard(GameObject card)
     {
-        card.SetActive(false);
+        
         Discard.Add(card);
         Hand.Remove(card);
+        Destroy(card);
     }
 
     public void ReshuffleCards()
@@ -119,10 +121,15 @@ public class CardManager : MonoBehaviour
         while(Hand.Count != 0)
         {
             GameObject card = Hand[0];
-            card.SetActive(false);
             Discard.Add(card);
             Hand.RemoveAt(0);
         }
+        GameObject[] x = GameObject.FindGameObjectsWithTag("Card");
+        for(int i = 0;i < x.Length;i++)
+        {
+            Destroy(x[i]);
+        }
+        
     }
 
 

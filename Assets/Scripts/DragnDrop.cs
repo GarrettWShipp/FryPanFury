@@ -14,9 +14,14 @@ public class DragnDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     private void Awake()
     {
+        m_canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Canvas>();
         m_rectTransform = GetComponent<RectTransform>();
         m_canvasGroup = GetComponent<CanvasGroup>();
         use = GetComponent<UseCard>();
+    }
+    private void Start()
+    {
+        m_canvasGroup.blocksRaycasts = true;
     }
 
     public void OnBeginDrag(PointerEventData _data)

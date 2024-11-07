@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e387cda63525d044dbc1208086918e61, type: 3}
   m_Name: SkeletonDefend
   m_EditorClassIdentifier: 
-  name: Shank
-  description: The goblin stabs you with there knife
-  cardImage: {fileID: 21300000, guid: fe3ffb9bfd2757e4c8af22fddf2efe59, type: 3}
-  cardType: Attack
-  manaCost: 1
-  attack: 6
+  name: Block
+  description: The skeleton readys themself for attacks
+  cardImage: {fileID: 1954910063, guid: de2a100c5970a6d4cbe2ab8b8a7fbe35, type: 3}
+  manaCost: 0
+  attack: 0
   Defensive: 0
   infoType:
     attack: 0

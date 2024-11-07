@@ -16,7 +16,13 @@ public class EndOfTurn : SimpleState
 
         ((CombatManager)stateMachine).nextButton.SetActive(false);
         ((CombatManager)stateMachine).altNextButton.SetActive(true);
-        ((CombatManager)stateMachine).EnemyMoveSpawnCard();
+
+        for (int i = 0; i < ((CombatManager)stateMachine).enemies.Length; i++)
+        {
+            ((CombatManager)stateMachine).enemyCard.GetComponent<CardDisplay>().card = ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().nextMove;
+            ((CombatManager)stateMachine).EnemyMoveSpawnCard();
+        }
+        
     }
 
     public override void UpdateState(float _dt)

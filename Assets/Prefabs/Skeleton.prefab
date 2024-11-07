@@ -1134,9 +1134,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b504facb0316724f8eddb07a7765b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPattern:
-  - Defend
-  - Attack
+  EnemyCards:
+  - {fileID: 11400000, guid: d722464fa51a3884f828fcc688e459db, type: 2}
+  - {fileID: 11400000, guid: 9f852f4ff406fdf4db58c4d4bd8ba03a, type: 2}
 --- !u!114 &9136073570188213112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1160,8 +1160,7 @@ MonoBehaviour:
   defenseIcon: {fileID: 4380160522134275052}
   defenseText: {fileID: 4748876095538193326}
   damage: 4
-  nextAttack: 
-  currentAttack: 
+  enemyMovePattern: {fileID: 0}
   counter: 0
   maxCounter: 0
   debuffCounter: 0
@@ -1173,6 +1172,13 @@ MonoBehaviour:
   flashTime: 0.25
   Image: {fileID: 3452969474576755348}
   enemyAnimIsDone: 0
+  infoType:
+    attack: 0
+    defense: 0
+    debuff: 0
+    buff: 0
+  movelist: []
+  nextMove: {fileID: 0}
 --- !u!114 &8163853303534096052
 MonoBehaviour:
   m_ObjectHideFlags: 0

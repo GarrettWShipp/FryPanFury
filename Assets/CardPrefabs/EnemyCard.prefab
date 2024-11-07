@@ -110,8 +110,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12.8051, y: 0.0000076293945}
-  m_SizeDelta: {x: 119.4897, y: 80.96}
+  m_AnchoredPosition: {x: 2.9, y: 0.0000076293945}
+  m_SizeDelta: {x: 150.9, y: 80.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5844552930896088373
 CanvasRenderer:
@@ -168,14 +168,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24.6
+  m_fontSize: 31.1
   m_fontSizeBase: 38.29
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 16
   m_fontSizeMax: 40
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -478,7 +478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.47450984, g: 0.37254903, b: 0.23529413, a: 1}
+  m_Color: {r: 0.4745098, g: 0.37254903, b: 0.23529413, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1020,13 +1020,13 @@ RectTransform:
   m_LocalScale: {x: 0.49999997, y: 0.49999997, z: 0.49999997}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 3333869197703381960}
+  - {fileID: 1371509904463858263}
+  - {fileID: 602038770203074134}
   - {fileID: 2883034722816460067}
   - {fileID: 4323250294538646673}
   - {fileID: 8894057026614078160}
   - {fileID: 5372091985363046223}
-  - {fileID: 602038770203074134}
-  - {fileID: 1371509904463858263}
-  - {fileID: 3333869197703381960}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1046,7 +1046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be0bd913d121c74092c361f540fe770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 11400000, guid: 999d9078d4c92284697174a4f92c55ca, type: 2}
+  card: {fileID: 11400000, guid: dfece0d7c9e4d2d47b5c1f5da1827cb7, type: 2}
   cardArt: {fileID: 1168432130202993919}
   nameText: {fileID: 5629640266703965028}
   descriptionText: {fileID: 1148754497355307293}

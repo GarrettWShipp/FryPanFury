@@ -36,16 +36,18 @@ AnimationClip:
       value: {fileID: 508528328, guid: 4e402158efd0bc0449f33c97f7953b49, type: 3}
     - time: 0.9
       value: {fileID: -998687000, guid: 4e402158efd0bc0449f33c97f7953b49, type: 3}
-    - time: 1.0666667
+    - time: 1.0166667
       value: {fileID: -358586679, guid: 4e402158efd0bc0449f33c97f7953b49, type: 3}
     - time: 1.15
       value: {fileID: 1579398114, guid: 4e402158efd0bc0449f33c97f7953b49, type: 3}
-    - time: 1.25
+    - time: 1.2833333
       value: {fileID: 1331447016, guid: 4e402158efd0bc0449f33c97f7953b49, type: 3}
     - time: 1.4333333
       value: {fileID: -1798847713, guid: 4e402158efd0bc0449f33c97f7953b49, type: 3}
-    - time: 1.5
+    - time: 1.5666667
       value: {fileID: -787835574, guid: 4e402158efd0bc0449f33c97f7953b49, type: 3}
+    - time: 1.65
+      value: {fileID: 1191211909, guid: 4e402158efd0bc0449f33c97f7953b49, type: 3}
     attribute: m_Sprite
     path: EnemyGFX
     classID: 114
@@ -81,12 +83,13 @@ AnimationClip:
     - {fileID: 1331447016, guid: 4e402158efd0bc0449f33c97f7953b49, type: 3}
     - {fileID: -1798847713, guid: 4e402158efd0bc0449f33c97f7953b49, type: 3}
     - {fileID: -787835574, guid: 4e402158efd0bc0449f33c97f7953b49, type: 3}
+    - {fileID: 1191211909, guid: 4e402158efd0bc0449f33c97f7953b49, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.5166667
+    m_StopTime: 1.6666666
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
