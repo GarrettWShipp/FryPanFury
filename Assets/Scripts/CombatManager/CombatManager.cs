@@ -17,6 +17,7 @@ public class CombatManager : SimpleStateMachine
     public GameObject[] enemies;
     public CardManager cardManager;
     [HideInInspector] public PlayerManager playerManager;
+    public GameManager gameManager;
     public bool combatIsDone = false;
     public GameObject combatStatMenu;
     public GameObject nextButton;
@@ -43,6 +44,7 @@ public class CombatManager : SimpleStateMachine
         playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
         ChangeState(nameof(PlayersTurn));
         m_enemyMoves = GameObject.FindWithTag("EnemyMove");
+        gameManager = gameManager.GetComponent<GameManager>();
 
     }
 

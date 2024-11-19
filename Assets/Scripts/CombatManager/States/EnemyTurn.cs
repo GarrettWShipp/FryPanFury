@@ -41,7 +41,12 @@ public class EnemyTurn : SimpleState
                 ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().Debuff();
                 
             }
-            
+            if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().infoType.poisonous)
+            {
+                ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().Poison();
+
+            }
+
         }
         ((CombatManager)stateMachine).ChangeState(nameof(EndOfTurn));
 

@@ -57,6 +57,10 @@ public class CardManager : MonoBehaviour
             NextButton.interactable = true;
             for(int i = 0; i < Hand.Count; i++)
             {
+                if (Hand[i] == null)
+                {
+                    return;
+                }
                 if (Hand[i].GetComponent<UseCard>().beingDragged == false)
                 {
                     Hand[i].GetComponent<CanvasGroup>().blocksRaycasts = true;
@@ -71,6 +75,10 @@ public class CardManager : MonoBehaviour
             NextButton.interactable = false;
             for (int i = 0; i < Hand.Count; i++)
             {
+                if (Hand[i] == null)
+                {
+                    return;
+                }
                 Hand[i].GetComponent<CanvasGroup>().blocksRaycasts = false;
             }
         }
@@ -97,12 +105,11 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    public void UseCard(GameObject card)
+    public void UseCard()
     {
         
-        Discard.Add(card);
-        Hand.Remove(card);
-        Destroy(card);
+        //Discard.Add();
+        //Hand.Remove();
     }
 
     public void ReshuffleCards()
@@ -124,10 +131,10 @@ public class CardManager : MonoBehaviour
             Discard.Add(card);
             Hand.RemoveAt(0);
         }
-        GameObject[] x = GameObject.FindGameObjectsWithTag("Card");
-        for(int i = 0;i < x.Length;i++)
+        GameObject[] cards = GameObject.FindGameObjectsWithTag("Card");
+        for(int i = 0;i < cards.Length;i++)
         {
-            Destroy(x[i]);
+            Destroy(cards[i]);
         }
         
     }

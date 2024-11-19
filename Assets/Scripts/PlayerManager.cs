@@ -28,15 +28,19 @@ public class PlayerManager : MonoBehaviour
 
     public int debuffCounter;
     public int buffCounter;
+    public int poisonCounter;
 
     public bool isDebuffed = false;
     public bool isBuffed = false;
+    public bool isPoisoned = false;
 
-    public int buffvalue = 2;
-    public int debuffvalue = 2;
+    public int buffValue = 2;
+    public int debuffValue = 2;
+    public int poisonDamage = 2;
 
     public GameObject BuffGFX;
     public GameObject DebuffGFX;
+    public GameObject PoisonGFX;
 
     public float flashTime;
     Color origionalColor;
@@ -69,6 +73,10 @@ public class PlayerManager : MonoBehaviour
         {
             isBuffed = false;
         }
+        if (poisonCounter == 0)
+        {
+            isPoisoned = false;
+        }
         if (defense > 0)
         {
             defenseIcon.SetActive(true);
@@ -96,6 +104,12 @@ public class PlayerManager : MonoBehaviour
         }
         else
             DebuffGFX.SetActive(false);
+        if (isPoisoned)
+        {
+            PoisonGFX.SetActive(true);
+        }
+        else
+            PoisonGFX.SetActive(false);
 
     }
     public void FlashRed()

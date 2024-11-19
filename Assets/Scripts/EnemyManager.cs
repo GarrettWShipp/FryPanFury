@@ -154,7 +154,12 @@ public class EnemyManager : MonoBehaviour
         }
         enemyAnimIsDone = false;
     }
-
+    public void Poison()
+    {
+        m_playerManager.poisonCounter += 3;
+        m_playerManager.isPoisoned = true;
+        Debug.Log("Poisoned");
+    }
     public void Defend()
     {
         //Give defense

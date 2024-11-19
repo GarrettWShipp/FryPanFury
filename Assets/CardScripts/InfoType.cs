@@ -9,4 +9,5 @@ public class InfoType
     public bool defense;
     public bool debuff;
     public bool buff;
+    public bool poisonous;
 }

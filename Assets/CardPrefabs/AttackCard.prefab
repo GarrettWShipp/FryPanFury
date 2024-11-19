@@ -777,6 +777,7 @@ MonoBehaviour:
     defense: 0
     debuff: 0
     buff: 0
+    poisonous: 0
 --- !u!114 &5714410676309371585
 MonoBehaviour:
   m_ObjectHideFlags: 0
