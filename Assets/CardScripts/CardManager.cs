@@ -1,3 +1,4 @@
+using SuperPupSystems.Helper;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -19,17 +20,21 @@ public class CardManager : MonoBehaviour
     private int m_ranInt;
     public GameObject cardBar;
     public Button NextButton;
+    private GameManager m_gameManager;
 
     // Start is called before the first frame update
 
     private void Awake()
     {
         cardBar = GameObject.FindGameObjectWithTag("Hand");
+        m_gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
     }
     void Start()
     {
         if (Deck == null)
             Debug.LogError("Deck is empty put a gameObject into the deck list");
+
+        Deck = m_gameManager.cards;
 
     }
 

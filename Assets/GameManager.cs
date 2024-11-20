@@ -26,7 +26,13 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
             return;
         }
+        m_player = GameObject.Find("Player");
+        m_cardManager = GameObject.FindWithTag("CardManager");
+        cards = m_cardManager.GetComponent<CardManager>().Deck;
+        health = m_player.GetComponent<Health>().currentHealth;
 
     }
+
+    
 
 }

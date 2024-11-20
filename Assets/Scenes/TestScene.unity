@@ -1864,6 +1864,7 @@ MonoBehaviour:
   enemies: []
   cardManager: {fileID: 1371539174}
   playerManager: {fileID: 0}
+  gameManager: {fileID: 0}
   combatIsDone: 0
   combatStatMenu: {fileID: 1059819792}
   nextButton: {fileID: 853259425}
@@ -3638,6 +3639,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 339429222}
     m_Modifications:
+    - target: {fileID: 1464631274624310292, guid: 4e5c5397156ab2d458cacdd86d0ea350, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1464631274624310292, guid: 4e5c5397156ab2d458cacdd86d0ea350, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6352491175659756240, guid: 4e5c5397156ab2d458cacdd86d0ea350, type: 3}
       propertyPath: m_Name
       value: KnifeGoblin

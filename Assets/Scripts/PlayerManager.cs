@@ -19,6 +19,8 @@ public class PlayerManager : MonoBehaviour
 
     private Health m_health;
 
+    private GameManager m_gameManager;
+
     //Player stats
     public int curMana;
     public int mana;
@@ -52,6 +54,12 @@ public class PlayerManager : MonoBehaviour
         curMana = mana;
         m_health = this.GetComponent<Health>();
         origionalColor = Image.color;
+        m_gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+    }
+
+    public void Start()
+    {
+        m_health.currentHealth = m_gameManager.health;
     }
 
     // Update is called once per frame

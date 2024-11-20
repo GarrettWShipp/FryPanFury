@@ -34,8 +34,11 @@ public class PlayersTurn : SimpleState
         if (((CombatManager)stateMachine).playerManager.buffCounter != 0)
             ((CombatManager)stateMachine).playerManager.buffCounter--;
         if (((CombatManager)stateMachine).playerManager.poisonCounter != 0)
+        {
             ((CombatManager)stateMachine).playerManager.GetComponent<Health>().Damage(((CombatManager)stateMachine).playerManager.poisonDamage);
-        ((CombatManager)stateMachine).playerManager.poisonCounter--;
+            ((CombatManager)stateMachine).playerManager.poisonCounter--;
+        }
+
         Debug.Log("End turn");
         ((CombatManager)stateMachine).cardManager.DiscardAll();
     }

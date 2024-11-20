@@ -13,6 +13,7 @@ TagManager:
   - EnemyMove
   - EnemyCards
   - Canvas
+  - GameManager
   layers:
   - Default
   - TransparentFX
