@@ -12,6 +12,7 @@ public class CardManager : MonoBehaviour
     public List<GameObject> Deck;
     public List<GameObject> Hand;
     public List<GameObject> Discard;
+    public List<GameObject> AllCards;
     public Animator anim;
     public bool animIsDone = false;
     public int drawCount;
@@ -110,11 +111,29 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    public void UseCard()
+    public void UseCard(GameObject prefab)
     {
+        int count = 0;
+        if (count == 0)
+        {
+            for (int i = 0; i < AllCards.Count; i++)
+            {
+                if (AllCards[i].GetComponent<UseCard>().cardScript == prefab.GetComponent<UseCard>().cardScript)
+                {
+                    Discard.Add(AllCards[i]);
+                }
+            }
+            for (int i = 0; i < Hand.Count; i++)
+            {
+                if (Hand[i].GetComponent<UseCard>().cardScript == prefab.GetComponent<UseCard>().cardScript)
+                {
+                    Hand.Remove(Hand[i]);
+
+                }
+            }
+            count++;
+        }
         
-        //Discard.Add();
-        //Hand.Remove();
     }
 
     public void ReshuffleCards()
@@ -133,7 +152,13 @@ public class CardManager : MonoBehaviour
         while(Hand.Count != 0)
         {
             GameObject card = Hand[0];
-            Discard.Add(card);
+            for (int i = 0; i < AllCards.Count; i++)
+            {
+                if (AllCards[i].GetComponent<UseCard>().cardScript == card.GetComponent<UseCard>().cardScript)
+                {
+                    Discard.Add(AllCards[i]);
+                }
+            }
             Hand.RemoveAt(0);
         }
         GameObject[] cards = GameObject.FindGameObjectsWithTag("Card");

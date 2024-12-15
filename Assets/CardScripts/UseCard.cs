@@ -26,7 +26,7 @@ public class UseCard : MonoBehaviour
 
     [HideInInspector] public InfoType infoType;
 
-
+    public GameObject prefab;
 
     // Start is called before the first frame update
     void Awake()
@@ -103,7 +103,7 @@ public class UseCard : MonoBehaviour
                 }
                 Debug.Log("Played card");
 
-                cardManager.UseCard();
+                cardManager.UseCard(prefab);
                 Destroy(gameObject);
             }
             if(infoType.defense == true)
@@ -112,7 +112,7 @@ public class UseCard : MonoBehaviour
                 m_playerManager.defense += cardDefense;
                 Debug.Log("Played card");
 
-                cardManager.UseCard();
+                cardManager.UseCard(prefab);
                 Destroy(gameObject);
 
             }
@@ -121,7 +121,7 @@ public class UseCard : MonoBehaviour
                 Debug.Log("Played card");
                 m_playerManager.isBuffed = true;
                 m_playerManager.buffCounter += 3;
-                cardManager.UseCard();
+                cardManager.UseCard(prefab);
                 Destroy(gameObject);
             }
             if (infoType.debuff == true)
@@ -129,7 +129,7 @@ public class UseCard : MonoBehaviour
                 Debug.Log("Played card");
                 enemyManager.isDebuffed = true;
                 enemyManager.debuffCounter += 3;
-                cardManager.UseCard();
+                cardManager.UseCard(prefab);
                 Destroy(gameObject);
 
             }

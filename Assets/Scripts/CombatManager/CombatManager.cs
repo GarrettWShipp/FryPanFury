@@ -41,6 +41,7 @@ public class CombatManager : SimpleStateMachine
     // Start is called before the first frame update
     void Start()
     {
+        combatStatMenu.active = false;
         playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
         ChangeState(nameof(PlayersTurn));
         m_enemyMoves = GameObject.FindWithTag("EnemyMove");
@@ -55,10 +56,12 @@ public class CombatManager : SimpleStateMachine
         if (enemies.Length == 0)
         {
             combatIsDone = true;
+            combatStatMenu.active = true;
             return;
         }
         else
         {
+            combatStatMenu.active = false;
             combatIsDone = false;
             GameObject[] gos;
             gos = GameObject.FindGameObjectsWithTag("Enemy");

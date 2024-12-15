@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4864425095663046835}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.5652466, y: -0.80810547, z: -9.970734}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -81,8 +81,9 @@ MonoBehaviour:
   enemies: []
   cardManager: {fileID: 0}
   playerManager: {fileID: 0}
+  gameManager: {fileID: 0}
   combatIsDone: 0
-  combatStatMenu: {fileID: 0}
+  combatStatMenu: {fileID: 1019674162432630945, guid: 7e55aa844703975468a92c2bf7ca166e, type: 3}
   nextButton: {fileID: 0}
   altNextButton: {fileID: 0}
   enemyCard: {fileID: 5956860783757198213, guid: 5ab8a5fb6105c2245944bd13efb00822, type: 3}
