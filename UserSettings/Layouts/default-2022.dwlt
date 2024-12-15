@@ -121,7 +121,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 1633
+  controlID: 782
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 1528
+  controlID: 660
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
-  m_EnterPlayModeBehavior: 1
+  m_EnterPlayModeBehavior: 0
   m_UseMipMap: 0
   m_VSyncEnabled: 0
   m_Gizmos: 0
@@ -932,9 +932,9 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 0c53fec9f4ae4c9439aaa0a755e3ce68, type: 2}
+  m_AnimatorController: {fileID: 9100000, guid: 3931f09b62bf3fa4cad628d0b372a157, type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: -2963389832962446975, guid: 0c53fec9f4ae4c9439aaa0a755e3ce68, type: 2}
+  - m_Target: {fileID: 2702770793780737344, guid: 3931f09b62bf3fa4cad628d0b372a157, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
@@ -983,7 +983,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 40480
+  m_LastSelectedObjectID: -427598
 --- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1021,9 +1021,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 087b0000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: a88affff7291ffff6ca8ffffbab3ffff3ad4ffffa8d8ffff20dfffffc0dfffff34e2ffff98e4ffff62e8ffff4cebffff72ebfffff0f0ffff14fbffff289e0000
+      m_ExpandedIDs: 8ca0f8ff2ca1f8ff9ca3f8ff08a6f8ffdaa9f8ffc4acf8ffe4acf8ff2a71f9fffa79f9ff8680f9ff868df9ff7494f9fff6a2f9ffa4b0f9ff5ac2f9ffc8e7f9ffa00dfaff261afaffec1ffaff6420faffce22faff3425faff0029faffe82bfaff042cfaff3e30faff8c61faffec7bfaff2658feffe459feff4460feff4499feffc09cfeff08a9feff84aefeffa0b8feff28bdfeff58c5feff12cefeff64dbfeffdcdbfeff66f6ffff14fbfffff4ffffff286f000082770000a877000092c300004ecb0000c8cb0000d4cb000056cf000058d8000006ea000012eb000062eb0000300c0100a20e010078210100d64a0100ec4a01001a65010002770100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1092,7 +1092,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1100,16 +1100,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Unity\FryPanFury
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a6790000
-    m_LastClickedID: 31142
-    m_ExpandedIDs: 00000000787900007a7900007c7900007e790000807900008279000000ca9a3b
+    m_SelectedIDs: ce760000
+    m_LastClickedID: 30414
+    m_ExpandedIDs: 00000000cc760000ce760000d0760000d2760000d4760000d6760000f676000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1137,7 +1137,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000787900007a7900007c7900007e790000807900008279000000ca9a3b
+    m_ExpandedIDs: 00000000cc760000ce760000d0760000d2760000d4760000d676000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1164,7 +1164,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 2e0200000a7b000016710000fe750000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1189,10 +1189,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 275}
+    m_ScrollPosition: {x: 0, y: 80.33334}
     m_GridSize: 64
   m_SkipHiddenPackages: 0
-  m_DirectoriesAreaWidth: 117
+  m_DirectoriesAreaWidth: 118
 --- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1234,7 +1234,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 54
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:

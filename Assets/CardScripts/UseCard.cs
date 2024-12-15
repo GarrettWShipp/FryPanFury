@@ -103,8 +103,7 @@ public class UseCard : MonoBehaviour
                 }
                 Debug.Log("Played card");
 
-                cardManager.UseCard(prefab);
-                Destroy(gameObject);
+                
             }
             if(infoType.defense == true)
             {
@@ -112,8 +111,7 @@ public class UseCard : MonoBehaviour
                 m_playerManager.defense += cardDefense;
                 Debug.Log("Played card");
 
-                cardManager.UseCard(prefab);
-                Destroy(gameObject);
+                
 
             }
             if(infoType.buff == true)
@@ -121,18 +119,18 @@ public class UseCard : MonoBehaviour
                 Debug.Log("Played card");
                 m_playerManager.isBuffed = true;
                 m_playerManager.buffCounter += 3;
-                cardManager.UseCard(prefab);
-                Destroy(gameObject);
+                
             }
             if (infoType.debuff == true)
             {
                 Debug.Log("Played card");
                 enemyManager.isDebuffed = true;
                 enemyManager.debuffCounter += 3;
-                cardManager.UseCard(prefab);
-                Destroy(gameObject);
+                
 
             }
+            cardManager.UseCard(prefab);
+            Destroy(gameObject);
             m_playerManager.curMana -= m_cardMana;
         }
 

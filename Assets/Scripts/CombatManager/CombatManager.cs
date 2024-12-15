@@ -45,7 +45,7 @@ public class CombatManager : SimpleStateMachine
         playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
         ChangeState(nameof(PlayersTurn));
         m_enemyMoves = GameObject.FindWithTag("EnemyMove");
-        gameManager = gameManager.GetComponent<GameManager>();
+        gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
 
     }
 

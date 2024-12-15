@@ -26,13 +26,28 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
             return;
         }
-        m_player = GameObject.Find("Player");
-        m_cardManager = GameObject.FindWithTag("CardManager");
-        cards = m_cardManager.GetComponent<CardManager>().Deck;
-        health = m_player.GetComponent<Health>().currentHealth;
 
     }
+    private void Start()
+    {
+        m_player = GameObject.Find("Player");
+        m_cardManager = GameObject.FindWithTag("CardManager");
+        LoadData();
+    }
 
-    
+    public void GetData()
+    {
+        
+        cards = m_cardManager.GetComponent<CardManager>().Deck;
+        health = m_player.GetComponent<Health>().currentHealth;
+        handSize = m_player.GetComponent<PlayerManager>().totalHandSize;
+    }
+
+    public void LoadData()
+    {
+        m_cardManager.GetComponent<CardManager>().Deck = cards;
+        m_player.GetComponent<Health>().currentHealth = health;
+        m_player.GetComponent<PlayerManager>().totalHandSize = handSize;
+    }
 
 }

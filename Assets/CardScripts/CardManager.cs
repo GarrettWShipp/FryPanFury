@@ -121,6 +121,7 @@ public class CardManager : MonoBehaviour
                 if (AllCards[i].GetComponent<UseCard>().cardScript == prefab.GetComponent<UseCard>().cardScript)
                 {
                     Discard.Add(AllCards[i]);
+                    break;
                 }
             }
             for (int i = 0; i < Hand.Count; i++)
@@ -131,7 +132,7 @@ public class CardManager : MonoBehaviour
 
                 }
             }
-            count++;
+            
         }
         
     }
