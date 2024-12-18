@@ -14,6 +14,7 @@ TagManager:
   - EnemyCards
   - Canvas
   - GameManager
+  - Room
   layers:
   - Default
   - TransparentFX

@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> cards;
     public int health;
     public int handSize;
+    public int floorsCleared;
 
     public void Awake()
     {
