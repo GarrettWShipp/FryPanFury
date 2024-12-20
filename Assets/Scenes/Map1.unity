@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee098b505d72c4247a2885850d3227ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfFloors: 10
+  numberOfFloors: 2
   floorPrefab: {fileID: 3017470695759005939, guid: e274b62b7c68a4646b8ed23f471bf97f, type: 3}
   roomPrefab: {fileID: 4717654860056620681, guid: 4b258d2baaa633e48bb10bd609b642a9, type: 3}
   mapObject: {fileID: 2010257438}
@@ -297,7 +297,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1405077565
 Canvas:
   m_ObjectHideFlags: 0
@@ -307,8 +307,8 @@ Canvas:
   m_GameObject: {fileID: 1405077562}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 2
+  m_Camera: {fileID: 1977597978}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -330,7 +330,7 @@ RectTransform:
   m_GameObject: {fileID: 1405077562}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2010257439}
@@ -339,8 +339,8 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_SizeDelta: {x: 18, y: 10}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1761184070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -355,7 +355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6311801131685361841, guid: 8a43d963220583d48843bc9a911aeba7, type: 3}
       propertyPath: floorsCleared
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9014858891713320890, guid: 8a43d963220583d48843bc9a911aeba7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -574,8 +574,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 1500, y: 3000}
+  m_AnchoredPosition: {x: 0, y: 0.5}
+  m_SizeDelta: {x: 15, y: 30}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &2010257440
 MonoBehaviour:
@@ -630,8 +630,8 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 100
-    m_Bottom: 100
+    m_Top: 0
+    m_Bottom: 0
   m_ChildAlignment: 7
   m_Spacing: 0
   m_ChildForceExpandWidth: 1

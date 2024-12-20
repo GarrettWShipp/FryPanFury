@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,12 @@ public class MapManager : MonoBehaviour
     public GameObject roomPrefab;
     public GameObject mapObject;
 
+    Transform floor1;
+    Transform floor2;
+    Transform room1;
+    Transform room2;
+    LineRenderer lr;
+
     public void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -46,7 +53,14 @@ public class MapManager : MonoBehaviour
     {
         m_gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         GenerateMap();
+        PathRender();
+        /*    
+        lr.SetPosition(0, new Vector3(0, 0, 0));
+
+        mapObject.transform.GetChild(0).gameObject.SetActive(true);
+        */
     }
+    
 
     public void GenerateMap()
     {
@@ -91,6 +105,36 @@ public class MapManager : MonoBehaviour
                         room.GetComponent <Button>().interactable = false;
                     }
                 }
+            }
+        }
+    }
+
+    public void PathRender()
+    {
+        for(int i = 0;  i < mapObject.transform.childCount; i++)
+        {
+            floor1 = mapObject.transform.GetChild(i);
+
+            if (i + 1 < mapObject.transform.childCount)
+            {
+                floor2 = mapObject.transform.GetChild(i + 1);
+            }
+            else
+            {
+                return;
+            }
+
+            for (int j = 0; j < floor1.childCount; j++)
+            {
+                room1 = floor1.GetChild(j);
+                lr = room1.AddComponent<LineRenderer>();
+                lr.sortingOrder = 1;
+                lr.SetPosition(0, new Vector3(room1.position.x, room1.localPosition.y, 0));
+            }
+            for(int j = 0; j < floor2.childCount; j++)
+            {
+                room2 = floor2.GetChild(j);
+                floor1.GetChild(j).GetComponent<LineRenderer>().SetPosition(1, new Vector3 (room2.position.x, room2.localPosition.y, 0));
             }
         }
     }
