@@ -9,6 +9,7 @@ public class MapManager : MonoBehaviour
     public static MapManager instance { get; private set; }
 
     private GameManager m_gameManager;
+    public LineRenderUI lineRenderer;
 
     private int m_maxshops;
     private int m_minshops;
@@ -16,7 +17,7 @@ public class MapManager : MonoBehaviour
     private int m_minEvents;
     private int m_maxElites;
     private int m_minElites;
-    private int m_maxRoomsOnFloor = 4;
+    private int m_maxRoomsOnFloor = 5;
     private int m_minRoomsOnFloor;
 
     public int numberOfFloors;
@@ -30,7 +31,6 @@ public class MapManager : MonoBehaviour
     Transform floor2;
     Transform room1;
     Transform room2;
-    LineRenderer lr;
 
     public void Awake()
     {
@@ -54,11 +54,6 @@ public class MapManager : MonoBehaviour
         m_gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         GenerateMap();
         PathRender();
-        /*    
-        lr.SetPosition(0, new Vector3(0, 0, 0));
-
-        mapObject.transform.GetChild(0).gameObject.SetActive(true);
-        */
     }
     
 
@@ -78,6 +73,7 @@ public class MapManager : MonoBehaviour
                     GameObject room = Instantiate(roomPrefab, floor.transform);
                     room.name = "Room " + j.ToString();
                 }
+
             }
             else
             {
@@ -102,16 +98,16 @@ public class MapManager : MonoBehaviour
                     }
                     else
                     {
-                        room.GetComponent <Button>().interactable = false;
+                        room.GetComponent<Button>().interactable = false;
                     }
+                    
                 }
             }
         }
     }
-
     public void PathRender()
     {
-        for(int i = 0;  i < mapObject.transform.childCount; i++)
+        for (int i = 0; i < mapObject.transform.childCount; i++)
         {
             floor1 = mapObject.transform.GetChild(i);
 
@@ -127,14 +123,14 @@ public class MapManager : MonoBehaviour
             for (int j = 0; j < floor1.childCount; j++)
             {
                 room1 = floor1.GetChild(j);
-                lr = room1.AddComponent<LineRenderer>();
-                lr.sortingOrder = 1;
-                lr.SetPosition(0, new Vector3(room1.position.x, room1.localPosition.y, 0));
-            }
-            for(int j = 0; j < floor2.childCount; j++)
-            {
-                room2 = floor2.GetChild(j);
-                floor1.GetChild(j).GetComponent<LineRenderer>().SetPosition(1, new Vector3 (room2.position.x, room2.localPosition.y, 0));
+                lineRenderer = room1.gameObject.GetComponent<LineRenderUI>();
+                for (int x = 0; x < floor2.childCount; x++)
+                {
+                    room2 = floor2.GetChild(x);
+                    Debug.Log("DrawLine");
+                    lineRenderer.CreateLine(room1.GetComponent<RectTransform>().position, room2.GetComponent<RectTransform>().position, Color.gray);
+                }
+
             }
         }
     }

@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 982916392}
   - component: {fileID: 982916393}
+  - component: {fileID: 982916394}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
@@ -167,10 +168,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee098b505d72c4247a2885850d3227ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfFloors: 2
+  lineRenderer: {fileID: 0}
+  numberOfFloors: 9
   floorPrefab: {fileID: 3017470695759005939, guid: e274b62b7c68a4646b8ed23f471bf97f, type: 3}
   roomPrefab: {fileID: 4717654860056620681, guid: 4b258d2baaa633e48bb10bd609b642a9, type: 3}
   mapObject: {fileID: 2010257438}
+--- !u!114 &982916394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982916391}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8fc922ab66b0334ab91548062ade992, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1092490170
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,10 +350,10 @@ RectTransform:
   - {fileID: 2010257439}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 18, y: 10}
+  m_SizeDelta: {x: 20, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1761184070
 PrefabInstance:
@@ -464,7 +478,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.614556
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -489,7 +503,7 @@ Transform:
   m_GameObject: {fileID: 1977597976}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: -10.5, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
