@@ -7,20 +7,31 @@ using UnityEngine.SceneManagement;
 
 public class CombatStatMenu : MonoBehaviour
 {
-    public CombatManager CombatManager;
+    public CombatManager combatManager;
+    public GameManager gameManager;
     private int m_curScene;
     public GameObject nextButton;
     public GameObject retry;
+    public TMP_Text coinText;
     public TMP_Text combatText;
+    public int totalCoins;
 
+    private void Awake()
+    {
+        gameManager = GameObject.Find("GameManger").GetComponent<GameManager>();
+        combatManager = GameObject.Find("CombatManager").GetComponent<CombatManager>();
+    }
     private void Update()
     {
+        
         m_curScene = SceneManager.GetActiveScene().buildIndex;
-        if (CombatManager.combatIsDone)
+        if (combatManager.combatIsDone)
         {
             nextButton.SetActive(true);
             retry.SetActive(false);
+            coinText.text = "Total coins: " + totalCoins;
             combatText.text = "You Won Congrats";
+
         }
         else
         {
@@ -39,6 +50,12 @@ public class CombatStatMenu : MonoBehaviour
     }
     public void LoadNext()
     {
+        gameManager.coins += totalCoins;
+        gameManager.numberOfFights++;
+        if(gameManager.GetComponent<GameSettings>().shortRest)
+        {
+            SceneManager.LoadScene("ShortRest");
+        }
         if (SceneManager.GetSceneByBuildIndex(m_curScene + 1) == null)
             SceneManager.LoadScene("MainMenu");
         else

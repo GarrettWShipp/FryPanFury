@@ -39,6 +39,11 @@ public class PlayersTurn : SimpleState
             ((CombatManager)stateMachine).playerManager.poisonCounter--;
         }
 
+        if (((CombatManager)stateMachine).enemyCards.Length != 0)
+            for (int i = 0; i < ((CombatManager)stateMachine).enemyCards.Length; i++)
+            {
+                ((CombatManager)stateMachine).DestroyGameObject(((CombatManager)stateMachine).enemyCards[i]);
+            }
         Debug.Log("End turn");
         ((CombatManager)stateMachine).cardManager.DiscardAll();
     }

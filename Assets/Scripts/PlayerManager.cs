@@ -39,6 +39,7 @@ public class PlayerManager : MonoBehaviour
     public int buffValue = 2;
     public int debuffValue = 2;
     public int poisonDamage = 2;
+    public int coins = 0;
 
     public GameObject BuffGFX;
     public GameObject DebuffGFX;

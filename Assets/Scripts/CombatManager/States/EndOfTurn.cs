@@ -13,9 +13,6 @@ public class EndOfTurn : SimpleState
         base.OnStart();
         Debug.Log("End turn display");
 
-        ((CombatManager)stateMachine).nextButton.SetActive(false);
-        ((CombatManager)stateMachine).altNextButton.SetActive(true);
-
         for (int i = 0; i < ((CombatManager)stateMachine).enemies.Length; i++)
         {
             ((CombatManager)stateMachine).enemyCard.GetComponent<CardDisplay>().card = ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().nextMove;
@@ -44,9 +41,5 @@ public class EndOfTurn : SimpleState
             {
                 ((CombatManager)stateMachine).DestroyGameObject(((CombatManager)stateMachine).enemyCards[i]);
             }
-        
-
-            ((CombatManager)stateMachine).nextButton.SetActive(true);
-        ((CombatManager)stateMachine).altNextButton.SetActive(false);
     }
 }

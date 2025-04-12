@@ -2271,7 +2271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1019674162432630945, guid: 7e55aa844703975468a92c2bf7ca166e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4170871089704976794, guid: 7e55aa844703975468a92c2bf7ca166e, type: 3}
       propertyPath: CombatManager
@@ -2438,7 +2438,7 @@ PrefabInstance:
       objectReference: {fileID: 1389111764}
     - target: {fileID: 4864425095663046835, guid: 7518a70e2d3ea3043b67e242eebe97f5, type: 3}
       propertyPath: m_Name
-      value: CombatManager (1)
+      value: CombatManager
       objectReference: {fileID: 0}
     - target: {fileID: 7691518249698199596, guid: 7518a70e2d3ea3043b67e242eebe97f5, type: 3}
       propertyPath: m_LocalPosition.x

@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public int health;
     public int handSize;
     public int floorsCleared;
+    public int coins;
+    public int numberOfFights;
 
     public void Awake()
     {
@@ -49,6 +51,7 @@ public class GameManager : MonoBehaviour
         m_cardManager.GetComponent<CardManager>().Deck = cards;
         m_player.GetComponent<Health>().currentHealth = health;
         m_player.GetComponent<PlayerManager>().totalHandSize = handSize;
+        m_player.GetComponent<PlayerManager>().coins = coins;
     }
 
 }

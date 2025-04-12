@@ -1,5 +1,4 @@
 using SuperPupSystems.Helper;
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,6 +27,7 @@ public class EnemyManager : MonoBehaviour
     private int m_tempDefense;
 
     private PlayerManager m_playerManager;
+    public GameObject m_combatStats;
 
     [HideInInspector] public EnemyAttackPattern enemyMovePattern;
     [HideInInspector] public int counter = 0;
@@ -53,17 +53,25 @@ public class EnemyManager : MonoBehaviour
 
     [HideInInspector] public SimpleCardScript nextMove;
 
+    public Vector2Int awardCoinsRange;
+    private int m_coins;
+
     // Start is called before the first frame update
+    private void Awake()
+    {
+        m_combatStats = GameObject.Find("CombatStats");
+    }
     void Start()
     {
         m_anim = GetComponent<Animator>();
         m_playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
+        m_combatStats.SetActive(false);
         m_health = this.GetComponent<Health>();
         enemyMovePattern = this.GetComponent<EnemyAttackPattern>();
         origionalColor = Image.color;
         m_ogDamage = damage;
         movelist = enemyMovePattern.EnemyCards;
-
+        m_coins = Random.Range(awardCoinsRange.x, awardCoinsRange.y);
         nextMove = movelist[0];
     }
 
@@ -197,6 +205,10 @@ public class EnemyManager : MonoBehaviour
     public void AnimTrigger()
     {
         enemyAnimIsDone = true;
+    }
+    public void addCoins()
+    {
+        m_combatStats.GetComponent<CombatStatMenu>().totalCoins += m_coins;
     }
 
     public SimpleCardScript[] Shift(SimpleCardScript[] myArray)

@@ -15,6 +15,7 @@ TagManager:
   - Canvas
   - GameManager
   - Room
+  - CombatStats
   layers:
   - Default
   - TransparentFX

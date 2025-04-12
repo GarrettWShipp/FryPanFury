@@ -15,6 +15,11 @@ public class EnemyTurn : SimpleState
             ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().defense = 0;
             
         }
+        for (int i = 0; i < ((CombatManager)stateMachine).enemies.Length; i++)
+        {
+            ((CombatManager)stateMachine).enemyCard.GetComponent<CardDisplay>().card = ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().nextMove;
+            ((CombatManager)stateMachine).EnemyMoveSpawnCard();
+        }
     }
 
     public override void UpdateState(float _dt)
@@ -48,7 +53,7 @@ public class EnemyTurn : SimpleState
             }
 
         }
-        ((CombatManager)stateMachine).ChangeState(nameof(EndOfTurn));
+        ((CombatManager)stateMachine).ChangeState(nameof(PlayersTurn));
 
         if (((CombatManager)stateMachine).combatIsDone)
         {
