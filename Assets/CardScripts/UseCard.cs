@@ -5,7 +5,7 @@ public class UseCard : MonoBehaviour
 {
     public SimpleCardScript cardScript;
 
-    private PlayerManager m_playerManager;
+    public PlayerManager m_playerManager;
     [HideInInspector] public Health targetHealth;
     [HideInInspector] public EnemyManager enemyManager;
     [HideInInspector] public CardManager cardManager;
@@ -84,6 +84,7 @@ public class UseCard : MonoBehaviour
         {
             if (infoType.attack == true)
             {
+                cardAttack += m_playerManager.bonusDmg;
                 if (enemyManager.defense > 0)
                 {
                     m_tempDefense = enemyManager.defense - cardAttack;
@@ -102,10 +103,20 @@ public class UseCard : MonoBehaviour
                     targetHealth.Damage(cardAttack);
                     Debug.Log("" + cardAttack);
                 }
+                m_playerManager.bonusDmg = 0;
+                if (m_playerManager.isRaging)
+                {
+                    m_playerManager.rageCounter--;
+                }
             }
             if (infoType.defense == true)
             {
-                m_playerManager.defense += cardDefense;
+                if (m_playerManager.isRaging)
+                {
+                    m_playerManager.bonusDmg += cardDefense;
+                }
+                else
+                    m_playerManager.defense += cardDefense;
             }
             if (infoType.dmgBuff == true)
             {
@@ -136,6 +147,13 @@ public class UseCard : MonoBehaviour
             {
                 enemyManager.onFire = true;
                 enemyManager.fireCounter += cardScript.fire;
+            }
+            if(infoType.rage == true)
+            {
+                if (!m_playerManager.isRaging)
+                {
+                    m_playerManager.rageCounter++;
+                }
             }
             cardManager.UseCard(prefab);
             Destroy(gameObject);

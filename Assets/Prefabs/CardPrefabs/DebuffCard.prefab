@@ -680,6 +680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardScript: {fileID: 11400000, guid: bb1d13d94bea679428526de5b22e9ae3, type: 2}
+  m_playerManager: {fileID: 0}
   targetHealth: {fileID: 0}
   enemyManager: {fileID: 0}
   cardManager: {fileID: 0}

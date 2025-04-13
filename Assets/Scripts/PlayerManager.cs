@@ -25,10 +25,13 @@ public class PlayerManager : MonoBehaviour
     public int curMana;
     public int mana;
 
+    public bool isRaging;
     public int rageCounter;
+    public GameObject rageMeter;
 
     public int totalHandSize = 5;
 
+    public int bonusDmg;
 
     public int dmgDebuffCounter;
     public int dmgBuffCounter;
@@ -67,7 +70,6 @@ public class PlayerManager : MonoBehaviour
     public float flashTime;
     Color origionalColor;
     public Image Image;
-    public GameObject rageMeter;
     public KeyCode invetoryKey;
     private bool m_invetoryIsOpen = false;
     // Start is called before the first frame update

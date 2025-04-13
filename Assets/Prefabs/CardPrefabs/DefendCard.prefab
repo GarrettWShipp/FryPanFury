@@ -1190,6 +1190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardScript: {fileID: 11400000, guid: 999d9078d4c92284697174a4f92c55ca, type: 2}
+  m_playerManager: {fileID: 0}
   targetHealth: {fileID: 0}
   enemyManager: {fileID: 0}
   cardManager: {fileID: 0}
