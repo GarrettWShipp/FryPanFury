@@ -10,16 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e387cda63525d044dbc1208086918e61, type: 3}
-  m_Name: Buff
+  m_Name: CrabDef
   m_EditorClassIdentifier: 
-  name: Cook
-  description: You cook some food giving you a buff to your damage
-  cardImage: {fileID: 21300000, guid: e83b56a4a35e46c4382e3d9f245f551e, type: 3}
-  manaCost: 1
+  name: Guard
+  description: 
+  cardImage: {fileID: 0}
+  manaCost: 0
   attack: 0
-  Defensive: 0
+  Defensive: 10
+  rage: 0
   infoType:
     attack: 0
-    defense: 0
-    debuff: 0
-    buff: 1
+    defense: 1
+    dmgDebuff: 0
+    defDebuff: 0
+    dmgBuff: 0
+    defBuff: 0
+    teamDefBuff: 0
+    teamDmgBuff: 0
+    poisonous: 0
+    bleed: 0
+    fire: 0
+    rage: 0
+    specialMove: 0

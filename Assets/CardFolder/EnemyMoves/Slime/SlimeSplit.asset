@@ -10,17 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e387cda63525d044dbc1208086918e61, type: 3}
-  m_Name: Attack
+  m_Name: SlimeSplit
   m_EditorClassIdentifier: 
-  name: Cast Iron
-  description: you use your iron pan to cast iron on your target
-  cardImage: {fileID: 21300000, guid: fe3ffb9bfd2757e4c8af22fddf2efe59, type: 3}
-  cardType: Attack
-  manaCost: 1
-  attack: 6
+  name: Split
+  description: 
+  cardImage: {fileID: 0}
+  manaCost: 0
+  attack: 0
   Defensive: 0
+  rage: 0
   infoType:
-    attack: 1
-    deffense: 0
-    debuff: 0
-    buff: 0
+    attack: 0
+    defense: 0
+    dmgDebuff: 0
+    defDebuff: 0
+    dmgBuff: 0
+    defBuff: 0
+    teamDefBuff: 0
+    teamDmgBuff: 0
+    poisonous: 0
+    bleed: 0
+    fire: 0
+    rage: 0
+    specialMove: 1

@@ -22,7 +22,7 @@ public class CardSlot : MonoBehaviour, IDropHandler
         Debug.Log("OnDrop selected target is " + gameObject);
         if (_data.pointerDrag != null);
         {
-            if (_data.pointerDrag.GetComponent<UseCard>().infoType.attack == true || _data.pointerDrag.GetComponent<UseCard>().infoType.debuff == true)
+            if (_data.pointerDrag.GetComponent<UseCard>().infoType.attack == true || _data.pointerDrag.GetComponent<UseCard>().infoType.dmgDebuff == true || _data.pointerDrag.GetComponent<UseCard>().infoType.defDebuff == true)
             {
                 if (gameObject.tag == "Enemy")
                 {

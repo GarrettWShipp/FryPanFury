@@ -11,12 +11,13 @@ public class DeckViewer : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+        ViewCards();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
     public void ViewCards()
     {

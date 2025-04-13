@@ -18,6 +18,14 @@ public class EnemyManager : MonoBehaviour
     public GameObject defenseIcon;
     public TMP_Text defenseText;
 
+    public bool onFire = false;
+    public int fireCounter;
+    public int fireDmg = 3;
+
+    public bool isPoisoned = false;
+    public int poisonCounter;
+    public int poisonDmg = 2;
+
     public int damage;
     private int m_ogDamage;
     private int m_buffValue = 2;
@@ -33,13 +41,20 @@ public class EnemyManager : MonoBehaviour
     [HideInInspector] public int counter = 0;
     [HideInInspector] public int maxCounter;
 
-    public int debuffCounter;
-    public int buffCounter;
+    public int dmgDebuffCounter;
+    public int dmgBuffCounter;
+    public int defDebuffCounter;
+    public int defBuffCounter;
 
-    public bool isDebuffed = false;
-    public bool isBuffed = false;
-    public GameObject BuffGFX;
-    public GameObject DebuffGFX;
+    public bool dmgIsDebuffed = false;
+    public bool dmgIsBuffed = false;
+    public GameObject dmgBuffGFX;
+    public GameObject dmgDebuffGFX;
+
+    public bool defIsDebuffed = false;
+    public bool defIsBuffed = false;
+    public GameObject defBuffGFX;
+    public GameObject defDebuffGFX;
 
     public float flashTime;
     Color origionalColor;
@@ -102,30 +117,52 @@ public class EnemyManager : MonoBehaviour
         infoType = movelist[0].infoType;
         
         
-        if (isBuffed)
+        if (dmgIsBuffed)
         {
-            BuffGFX.SetActive(true);
+            dmgBuffGFX.SetActive(true);
             damage = damage * m_buffValue;
             
         }
         else
         {
-            BuffGFX.SetActive(false);
+            dmgBuffGFX.SetActive(false);
             damage = m_ogDamage;
         }
 
-        if (isDebuffed)
+        if (dmgIsDebuffed)
         {
-            DebuffGFX.SetActive(true);
+            dmgDebuffGFX.SetActive(true);
             damage = damage / m_debuffValue;
             
         }
         else
         {
-            DebuffGFX.SetActive(false);
+            dmgDebuffGFX.SetActive(false);
             damage = m_ogDamage;
         }
-        
+        if (defIsBuffed)
+        {
+            defBuffGFX.SetActive(true);
+            damage = damage * m_buffValue;
+
+        }
+        else
+        {
+            defBuffGFX.SetActive(false);
+            damage = m_ogDamage;
+        }
+
+        if (defIsDebuffed)
+        {
+            defDebuffGFX.SetActive(true);
+            damage = damage / m_debuffValue;
+
+        }
+        else
+        {
+            defDebuffGFX.SetActive(false);
+            damage = m_ogDamage;
+        }
     }
 
     public void Attack()
@@ -149,6 +186,8 @@ public class EnemyManager : MonoBehaviour
         if (m_playerManager.defense <= 0)
         {
             m_playerManager.defense = 0;
+            m_playerManager.GetComponent<Health>().Damage(damage);
+            /*
             if(isDebuffed)
             {
                 m_playerManager.GetComponent<Health>().Damage(damage);
@@ -159,6 +198,7 @@ public class EnemyManager : MonoBehaviour
             }
             if (!isDebuffed && !isBuffed)
                 m_playerManager.GetComponent<Health>().Damage(damage);
+            */
         }
         enemyAnimIsDone = false;
     }
@@ -175,21 +215,37 @@ public class EnemyManager : MonoBehaviour
         defense += bonusDefense;
     }
 
-    public void Debuff()
+    public void DefDebuff()
     {
         //Makes m_playerManager Deal less damage
         Debug.Log("Debuff");
         m_anim.SetTrigger("Spell");
-        m_playerManager.isDebuffed = true;
-        m_playerManager.debuffCounter += 3;
+        m_playerManager.defIsDebuffed = true;
+        m_playerManager.defDebuffCounter += 3;
     }
-    public void Buff()
+    public void DefBuff()
     {
         //Makes enemy do more Damage
         Debug.Log("Buff");
         m_anim.SetTrigger("Spell");
-        isBuffed = true;
-        buffCounter += 3;
+        defIsBuffed = true;
+        defBuffCounter += 3;
+    }
+    public void DmgDebuff()
+    {
+        //Makes m_playerManager Deal less damage
+        Debug.Log("Debuff");
+        m_anim.SetTrigger("Spell");
+        m_playerManager.dmgIsDebuffed = true;
+        m_playerManager.dmgDebuffCounter += 3;
+    }
+    public void DmgBuff()
+    {
+        //Makes enemy do more Damage
+        Debug.Log("Buff");
+        m_anim.SetTrigger("Spell");
+        dmgIsBuffed = true;
+        dmgBuffCounter += 3;
     }
 
     public void FlashRed()

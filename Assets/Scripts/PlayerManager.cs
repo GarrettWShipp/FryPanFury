@@ -25,29 +25,51 @@ public class PlayerManager : MonoBehaviour
     public int curMana;
     public int mana;
 
+    public int rageCounter;
+
     public int totalHandSize = 5;
 
 
-    public int debuffCounter;
-    public int buffCounter;
-    public int poisonCounter;
+    public int dmgDebuffCounter;
+    public int dmgBuffCounter;
+    public int defDebuffCounter;
+    public int defBuffCounter;
+    public bool dmgIsDebuffed = false;
+    public bool dmgIsBuffed = false;
+    public GameObject dmgBuffGFX;
+    public GameObject dmgDebuffGFX;
 
-    public bool isDebuffed = false;
-    public bool isBuffed = false;
-    public bool isPoisoned = false;
+    public bool defIsDebuffed = false;
+    public bool defIsBuffed = false;
+    public GameObject defBuffGFX;
+    public GameObject defDebuffGFX;
 
-    public int buffValue = 2;
-    public int debuffValue = 2;
+
+    public int dmgBuffValue = 2;
+    public int dmgDebuffValue = 2;
+
+    public int defBuffValue = 2;
+    public int defDebuffValue = 2;
+
     public int poisonDamage = 2;
+    public int poisonCounter;
+    public bool isPoisoned = false;
+    public GameObject PoisonGFX;
+
+    public bool onFire = false;
+    public int fireCounter;
+    public int fireDmg = 3;
+
     public int coins = 0;
 
-    public GameObject BuffGFX;
-    public GameObject DebuffGFX;
-    public GameObject PoisonGFX;
+    public GameObject invetory;
 
     public float flashTime;
     Color origionalColor;
     public Image Image;
+    public GameObject rageMeter;
+    public KeyCode invetoryKey;
+    private bool m_invetoryIsOpen = false;
     // Start is called before the first frame update
     void Awake()
     {
@@ -61,11 +83,23 @@ public class PlayerManager : MonoBehaviour
     public void Start()
     {
         m_health.currentHealth = m_gameManager.health;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(invetoryKey))
+        {
+            invetory.SetActive(true);
+        }
+        if (Input.GetKeyUp(invetoryKey))
+        {
+            invetory.SetActive(false);
+        }
+
+            
+        rageMeter.GetComponent<RageMeter>().curRage = rageCounter;
         manaSlider.maxValue = mana;
         manaText.text = (int)curMana + "/" + (int)mana;
 
@@ -74,13 +108,22 @@ public class PlayerManager : MonoBehaviour
         healthSlider.maxValue = m_health.maxHealth;
         healthSlider.value = m_health.currentHealth;
         healthText.text = (int)m_health.currentHealth + "/" + (int)m_health.maxHealth;
-        if(debuffCounter == 0)
+        if(dmgDebuffCounter == 0)
         {
-            isDebuffed = false;
+            dmgIsDebuffed = false;
         }
-        if (buffCounter == 0)
+        if (dmgBuffCounter == 0)
         {
-            isBuffed = false;
+            dmgIsBuffed = false;
+        }
+
+        if (defDebuffCounter == 0)
+        {
+            defIsDebuffed = false;
+        }
+        if (defBuffCounter == 0)
+        {
+            defIsBuffed = false;
         }
         if (poisonCounter == 0)
         {
@@ -101,18 +144,32 @@ public class PlayerManager : MonoBehaviour
         {
             Debug.Log("Out of mana");
         }
-        if (isBuffed)
+        if (dmgIsBuffed)
         {
-            BuffGFX.SetActive(true);
+            dmgBuffGFX.SetActive(true);
         }
         else
-            BuffGFX.SetActive(false);
-        if (isDebuffed)
+            dmgBuffGFX.SetActive(false);
+        if (dmgIsDebuffed)
         {
-            DebuffGFX.SetActive(true);
+            dmgDebuffGFX.SetActive(true);
         }
         else
-            DebuffGFX.SetActive(false);
+            dmgDebuffGFX.SetActive(false);
+
+        if (defIsBuffed)
+        {
+            defBuffGFX.SetActive(true);
+        }
+        else
+            defBuffGFX.SetActive(false);
+        if (defIsDebuffed)
+        {
+            defDebuffGFX.SetActive(true);
+        }
+        else
+            defDebuffGFX.SetActive(false);
+
         if (isPoisoned)
         {
             PoisonGFX.SetActive(true);
@@ -120,6 +177,7 @@ public class PlayerManager : MonoBehaviour
         else
             PoisonGFX.SetActive(false);
 
+        
     }
     public void FlashRed()
     {
@@ -130,4 +188,6 @@ public class PlayerManager : MonoBehaviour
     {
         Image.color = origionalColor;
     }
+
+
 }

@@ -1415,27 +1415,49 @@ MonoBehaviour:
   bonusDefense: 0
   defenseIcon: {fileID: 4225088839112556481}
   defenseText: {fileID: 5398321193564746446}
+  onFire: 0
+  fireCounter: 0
+  fireDmg: 3
+  isPoisoned: 0
+  poisonCounter: 0
+  poisonDmg: 2
   damage: 3
+  m_combatStats: {fileID: 0}
   enemyMovePattern: {fileID: 0}
   counter: 0
   maxCounter: 0
-  debuffCounter: 0
-  buffCounter: 0
-  isDebuffed: 0
-  isBuffed: 0
-  BuffGFX: {fileID: 2810771864725498334}
-  DebuffGFX: {fileID: 1483851882872213225}
+  dmgDebuffCounter: 0
+  dmgBuffCounter: 0
+  defDebuffCounter: 0
+  defBuffCounter: 0
+  dmgIsDebuffed: 0
+  dmgIsBuffed: 0
+  dmgBuffGFX: {fileID: 0}
+  dmgDebuffGFX: {fileID: 0}
+  defIsDebuffed: 0
+  defIsBuffed: 0
+  defBuffGFX: {fileID: 0}
+  defDebuffGFX: {fileID: 0}
   flashTime: 0.25
   Image: {fileID: 4510072630606928406}
   enemyAnimIsDone: 0
   infoType:
     attack: 0
     defense: 0
-    debuff: 0
-    buff: 0
+    dmgDebuff: 0
+    defDebuff: 0
+    dmgBuff: 0
+    defBuff: 0
+    teamDefBuff: 0
+    teamDmgBuff: 0
     poisonous: 0
+    bleed: 0
+    fire: 0
+    rage: 0
+    specialMove: 0
   movelist: []
   nextMove: {fileID: 0}
+  awardCoinsRange: {x: 1, y: 10}
 --- !u!114 &4530135215357092645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1472,6 +1494,18 @@ MonoBehaviour:
   outOfHealth:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 6869075128165030927}
+        m_TargetAssemblyTypeName: EnemyManager, Assembly-CSharp
+        m_MethodName: addCoins
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 6352491175659756240}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive

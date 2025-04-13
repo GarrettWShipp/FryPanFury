@@ -28,7 +28,7 @@ public class NextAttack : MonoBehaviour
         else
             m_enemyManager.defending.SetActive(false);
 
-        if (m_enemyManager.nextMove.infoType.debuff || m_enemyManager.nextMove.infoType.buff)
+        if (m_enemyManager.nextMove.infoType.dmgDebuff || m_enemyManager.nextMove.infoType.dmgBuff || m_enemyManager.nextMove.infoType.defDebuff || m_enemyManager.nextMove.infoType.defBuff)
         {
             m_enemyManager.spell.SetActive(true);
         }

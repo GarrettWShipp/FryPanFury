@@ -36,15 +36,25 @@ public class EnemyTurn : SimpleState
                 ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().Defend();
                 
             }
-            if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().infoType.buff)
+            if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().infoType.defBuff)
             {
-                ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().Buff();
+                ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().DefBuff();
                 
             }
-            if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().infoType.debuff)
+            if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().infoType.dmgBuff)
             {
-                ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().Debuff();
+                ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().DmgBuff();
+
+            }
+            if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().infoType.defDebuff)
+            {
+                ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().DefDebuff();
                 
+            }
+            if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().infoType.dmgDebuff)
+            {
+                ((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().DmgDebuff();
+
             }
             if (((CombatManager)stateMachine).enemies[i].GetComponent<EnemyManager>().infoType.poisonous)
             {

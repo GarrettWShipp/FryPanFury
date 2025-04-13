@@ -10,7 +10,15 @@ public class CardDisplay : MonoBehaviour
     public Image cardArt;
 
     public TMP_Text nameText;
-    public TMP_Text descriptionText;
+
+    public GameObject rage;
+    public GameObject dmgDebuff;
+    public GameObject defDebuff;
+    public GameObject dmgBuff;
+    public GameObject defBuff;
+    public GameObject poisonous;
+    public GameObject bleed;
+    public GameObject fire;
 
     public TMP_Text manaText;
     public TMP_Text attackText;
@@ -24,7 +32,6 @@ public class CardDisplay : MonoBehaviour
         m_playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
         m_card = GetComponent<UseCard>();
         nameText.text = card.name;
-        descriptionText.text = card.description;
 
         cardArt.sprite = card.cardImage;
 
@@ -36,5 +43,54 @@ public class CardDisplay : MonoBehaviour
     {
         if (m_card != null)
             attackText.text = m_card.cardAttack.ToString();
+
+        if(card.infoType.rage == true)
+        {
+            rage.SetActive(true);
+        }
+        else
+            rage.SetActive(false);
+        if (card.infoType.dmgDebuff == true)
+        {
+            dmgDebuff.SetActive(true);
+        }
+        else
+            dmgDebuff.SetActive(false);
+        if (card.infoType.defDebuff == true)
+        {
+            defDebuff.SetActive(true);
+        }
+        else
+            defDebuff.SetActive(false);
+        if (card.infoType.dmgBuff == true)
+        {
+            dmgBuff.SetActive(true);
+        }
+        else
+            dmgBuff.SetActive(false);
+        if (card.infoType.defBuff == true)
+        {
+            defBuff.SetActive(true);
+        }
+        else
+            defBuff.SetActive(false);
+        if (card.infoType.poisonous == true)
+        {
+            poisonous.SetActive(true);
+        }
+        else
+            poisonous.SetActive(false);
+        if (card.infoType.bleed == true)
+        {
+            bleed.SetActive(true);
+        }
+        else
+            bleed.SetActive(false);
+        if (card.infoType.fire == true)
+        {
+            fire.SetActive(true);
+        }
+        else
+            fire.SetActive(false);
     }
 }

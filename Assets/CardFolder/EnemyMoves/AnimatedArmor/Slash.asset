@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e387cda63525d044dbc1208086918e61, type: 3}
+  m_Name: Slash
+  m_EditorClassIdentifier: 
+  name: Slash
+  description: 
+  cardImage: {fileID: 0}
+  manaCost: 0
+  attack: 7
+  Defensive: 0
+  rage: 0
+  infoType:
+    attack: 1
+    defense: 0
+    dmgDebuff: 0
+    defDebuff: 0
+    dmgBuff: 0
+    defBuff: 0
+    teamDefBuff: 0
+    teamDmgBuff: 0
+    poisonous: 0
+    bleed: 1
+    fire: 0
+    rage: 0
+    specialMove: 0

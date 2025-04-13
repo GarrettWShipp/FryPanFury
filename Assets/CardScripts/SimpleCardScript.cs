@@ -12,5 +12,8 @@ public class SimpleCardScript : ScriptableObject
     public int manaCost;
     public int attack;
     public int Defensive;
+    public int rage;
+    public int poison;
+    public int fire;
     public InfoType infoType;
 }

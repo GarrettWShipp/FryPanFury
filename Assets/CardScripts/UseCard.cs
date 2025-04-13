@@ -1,7 +1,5 @@
 using SuperPupSystems.Helper;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class UseCard : MonoBehaviour
 {
@@ -18,6 +16,8 @@ public class UseCard : MonoBehaviour
     [HideInInspector] public int cardAttack;
     [HideInInspector] public int cardAttackBuffed;
     [HideInInspector] public int cardAttackDebuffed;
+    [HideInInspector] public int cardDefenseBuffed;
+    [HideInInspector] public int cardDefenseDebuffed;
     [HideInInspector] public int cardDefense;
     [HideInInspector] public bool beingDragged;
 
@@ -42,34 +42,37 @@ public class UseCard : MonoBehaviour
     {
         m_playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
         cardManager = GameObject.FindGameObjectWithTag("CardManager").GetComponent<CardManager>();
-        cardAttackBuffed = cardAttack * m_playerManager.buffValue;
-        cardAttackDebuffed = cardAttack / m_playerManager.debuffValue;
+        cardAttackBuffed = cardAttack * m_playerManager.dmgBuffValue;
+        cardAttackDebuffed = cardAttack / m_playerManager.dmgDebuffValue;
+
+        cardDefenseBuffed = cardDefense * m_playerManager.defBuffValue;
+        cardDefenseDebuffed = cardDefense / m_playerManager.defDebuffValue;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (m_playerManager == null) 
+        if (m_playerManager == null)
         {
             m_playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
         }
         m_playerMana = m_playerManager.curMana;
-        if (m_playerManager.isBuffed )
+        if (m_playerManager.dmgIsBuffed)
         {
             cardAttack = cardAttackBuffed;
         }
-        if (m_playerManager.isDebuffed)
+        if (m_playerManager.dmgIsDebuffed)
         {
             cardAttack = cardAttackDebuffed;
         }
 
-        if(m_playerManager.isBuffed && m_playerManager.isDebuffed)
+        if (m_playerManager.dmgIsBuffed && m_playerManager.dmgIsDebuffed)
         {
             cardAttack = cardScript.attack;
         }
 
-        if (!m_playerManager.isBuffed && !m_playerManager.isDebuffed)
+        if (!m_playerManager.dmgIsBuffed && !m_playerManager.dmgIsDebuffed)
         {
             cardAttack = cardScript.attack;
         }
@@ -77,11 +80,9 @@ public class UseCard : MonoBehaviour
 
     public void TryToPlayCard()
     {
-        Debug.Log("Tried to play card");
         if (m_playerMana >= m_cardMana)
         {
-            Debug.Log("Check " + enemyManager);
-            if(infoType.attack == true)
+            if (infoType.attack == true)
             {
                 if (enemyManager.defense > 0)
                 {
@@ -91,7 +92,7 @@ public class UseCard : MonoBehaviour
                     cardAttack = m_tempAttack;
                     enemyManager.defense = m_tempDefense;
                 }
-                if(cardAttack < 0)
+                if (cardAttack < 0)
                 {
                     cardAttack = 0;
                 }
@@ -99,35 +100,42 @@ public class UseCard : MonoBehaviour
                 {
                     enemyManager.defense = 0;
                     targetHealth.Damage(cardAttack);
-                    Debug.Log("" +  cardAttack);
+                    Debug.Log("" + cardAttack);
                 }
-                Debug.Log("Played card");
-
-                
             }
-            if(infoType.defense == true)
+            if (infoType.defense == true)
             {
-
                 m_playerManager.defense += cardDefense;
-                Debug.Log("Played card");
-
-                
-
             }
-            if(infoType.buff == true)
+            if (infoType.dmgBuff == true)
             {
-                Debug.Log("Played card");
-                m_playerManager.isBuffed = true;
-                m_playerManager.buffCounter += 3;
-                
+                m_playerManager.dmgIsBuffed = true;
+                m_playerManager.dmgBuffCounter += 3;
             }
-            if (infoType.debuff == true)
+            if (infoType.defBuff == true)
             {
-                Debug.Log("Played card");
-                enemyManager.isDebuffed = true;
-                enemyManager.debuffCounter += 3;
-                
-
+                m_playerManager.defIsBuffed = true;
+                m_playerManager.defBuffCounter += 3;
+            }
+            if (infoType.defDebuff == true)
+            {
+                enemyManager.defIsDebuffed = true;
+                enemyManager.defDebuffCounter += 3;
+            }
+            if (infoType.dmgDebuff == true)
+            {
+                enemyManager.dmgIsDebuffed = true;
+                enemyManager.dmgDebuffCounter += 3;
+            }
+            if (infoType.poisonous == true)
+            {
+                enemyManager.isPoisoned = true;
+                enemyManager.poisonCounter += cardScript.poison;
+            }
+            if (infoType.fire == true)
+            {
+                enemyManager.onFire = true;
+                enemyManager.fireCounter += cardScript.fire;
             }
             cardManager.UseCard(prefab);
             Destroy(gameObject);
@@ -142,5 +150,5 @@ public class UseCard : MonoBehaviour
         }
     }
 
-   
+
 }
