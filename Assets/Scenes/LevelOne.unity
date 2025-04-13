@@ -2745,7 +2745,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4006663417713123330, guid: 8a43d963220583d48843bc9a911aeba7, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1638194372}
+      addedObject: {fileID: 1638194374}
   m_SourcePrefab: {fileID: 100100000, guid: 8a43d963220583d48843bc9a911aeba7, type: 3}
 --- !u!1 &1350058613
 GameObject:
@@ -3199,7 +3199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f040f2e292eb914d81a55664b51b881, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1638194372
+--- !u!114 &1638194374
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3208,12 +3208,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 862529818}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4bce99159c6c4e4d883747825fbadc0, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fbc77cd21d371e4d947431001495edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fightsBeforeRest: 0
-  gameManager: {fileID: 0}
-  shortRest: 0
+  wholeMap: []
+  numOfRooms: 6
+  dungeon:
+    dungeons: []
+  room:
+    rooms: []
+  door:
+    doors: 
+  scenes: 000000000100000002000000030000000400000005000000
 --- !u!224 &1700687199 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2807898061627439116, guid: 9bd85750117494b47afe01fa68cbd75a, type: 3}
