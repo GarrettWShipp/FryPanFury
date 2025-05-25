@@ -3214,12 +3214,12 @@ MonoBehaviour:
   wholeMap: []
   numOfRooms: 6
   dungeon:
-    dungeons: []
-  room:
     rooms: []
+  room:
+    doors: []
   door:
-    doors: 
-  scenes: 000000000100000002000000030000000400000005000000
+    scenes: 
+  sceneNames: []
 --- !u!224 &1700687199 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2807898061627439116, guid: 9bd85750117494b47afe01fa68cbd75a, type: 3}
