@@ -10,14 +10,14 @@ public class DragnDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     private RectTransform m_rectTransform;
     private CanvasGroup m_canvasGroup;
     private Vector2 m_startPos;
-    public UseCard use;
+    public PlayCard play;
 
     private void Awake()
     {
         m_canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Canvas>();
         m_rectTransform = GetComponent<RectTransform>();
         m_canvasGroup = GetComponent<CanvasGroup>();
-        use = GetComponent<UseCard>();
+        play = GetComponent<PlayCard>();
     }
     private void Start()
     {
@@ -27,7 +27,7 @@ public class DragnDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public void OnBeginDrag(PointerEventData _data)
     {
         Debug.Log("OnBeginDrag");
-        use.beingDragged = true;
+        play.beingDragged = true;
         m_startPos = GetComponent<RectTransform>().position;
         m_canvasGroup.alpha = .6f;
         m_canvasGroup.blocksRaycasts = false;
@@ -43,7 +43,7 @@ public class DragnDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public void OnEndDrag(PointerEventData _data)
     {
         Debug.Log("OnEndDrag");
-        use.beingDragged = false;
+        play.beingDragged = false;
         m_canvasGroup.alpha = 1f;
         GetComponent<RectTransform>().position = m_startPos;
         m_canvasGroup.blocksRaycasts = true;

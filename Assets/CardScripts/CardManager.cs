@@ -67,7 +67,7 @@ public class CardManager : MonoBehaviour
                 {
                     return;
                 }
-                if (Hand[i].GetComponent<UseCard>().beingDragged == false)
+                if (Hand[i].GetComponent<PlayCard>().beingDragged == false)
                 {
                     Hand[i].GetComponent<CanvasGroup>().blocksRaycasts = true;
                 }
@@ -111,14 +111,14 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    public void UseCard(GameObject prefab)
+    public void discardCard(GameObject prefab)
     {
         int count = 0;
         if (count == 0)
         {
             for (int i = 0; i < AllCards.Count; i++)
             {
-                if (AllCards[i].GetComponent<UseCard>().cardScript == prefab.GetComponent<UseCard>().cardScript)
+                if (AllCards[i].GetComponent<PlayCard>().cardScript == prefab.GetComponent<PlayCard>().cardScript)
                 {
                     Discard.Add(AllCards[i]);
                     break;
@@ -126,7 +126,7 @@ public class CardManager : MonoBehaviour
             }
             for (int i = 0; i < Hand.Count; i++)
             {
-                if (Hand[i].GetComponent<UseCard>().cardScript == prefab.GetComponent<UseCard>().cardScript)
+                if (Hand[i].GetComponent<PlayCard>().cardScript == prefab.GetComponent<PlayCard>().cardScript)
                 {
                     Hand.Remove(Hand[i]);
 
@@ -155,7 +155,7 @@ public class CardManager : MonoBehaviour
             GameObject card = Hand[0];
             for (int i = 0; i < AllCards.Count; i++)
             {
-                if (AllCards[i].GetComponent<UseCard>().cardScript == card.GetComponent<UseCard>().cardScript)
+                if (AllCards[i].GetComponent<PlayCard>().cardScript == card.GetComponent<PlayCard>().cardScript)
                 {
                     Discard.Add(AllCards[i]);
                 }

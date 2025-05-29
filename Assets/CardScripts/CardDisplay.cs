@@ -25,12 +25,12 @@ public class CardDisplay : MonoBehaviour
     public TMP_Text defenseText;
 
     private PlayerManager m_playerManager;
-    private UseCard m_card;
+    private PlayCard m_card;
     // Start is called before the first frame update
     void Start()
     {
         m_playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
-        m_card = GetComponent<UseCard>();
+        m_card = GetComponent<PlayCard>();
         nameText.text = card.name;
 
         cardArt.sprite = card.cardImage;
@@ -41,8 +41,8 @@ public class CardDisplay : MonoBehaviour
 
     private void Update()
     {
-        if (m_card != null)
-            attackText.text = m_card.cardAttack.ToString();
+        if (m_card != null && gameObject.GetComponent<Attack>() != null)
+            attackText.text = gameObject.GetComponent<Attack>().cardAttack.ToString();
 
         if(card.infoType.rage == true)
         {

@@ -1162,6 +1162,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2840029073587102980, guid: 9bd85750117494b47afe01fa68cbd75a, type: 3}
+      propertyPath: defBuffGFX
+      value: 
+      objectReference: {fileID: 1564200152}
+    - target: {fileID: 2840029073587102980, guid: 9bd85750117494b47afe01fa68cbd75a, type: 3}
+      propertyPath: dmgBuffGFX
+      value: 
+      objectReference: {fileID: 1564200152}
+    - target: {fileID: 2840029073587102980, guid: 9bd85750117494b47afe01fa68cbd75a, type: 3}
       propertyPath: invetoryKey
       value: 9
       objectReference: {fileID: 0}
@@ -1169,6 +1177,14 @@ PrefabInstance:
       propertyPath: rageCounter
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2840029073587102980, guid: 9bd85750117494b47afe01fa68cbd75a, type: 3}
+      propertyPath: defDebuffGFX
+      value: 
+      objectReference: {fileID: 1222531827}
+    - target: {fileID: 2840029073587102980, guid: 9bd85750117494b47afe01fa68cbd75a, type: 3}
+      propertyPath: dmgDebuffGFX
+      value: 
+      objectReference: {fileID: 1222531827}
     - target: {fileID: 2981303596620801324, guid: 9bd85750117494b47afe01fa68cbd75a, type: 3}
       propertyPath: outOfHealth.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2509,6 +2525,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978317865}
   m_CullTransparentMesh: 1
+--- !u!1 &1222531827 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6079555955461447801, guid: 9bd85750117494b47afe01fa68cbd75a, type: 3}
+  m_PrefabInstance: {fileID: 363945876}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1313420651
 GameObject:
   m_ObjectHideFlags: 0
@@ -2955,6 +2976,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1388115859}
   m_CullTransparentMesh: 1
+--- !u!1 &1564200152 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2234622135072220742, guid: 9bd85750117494b47afe01fa68cbd75a, type: 3}
+  m_PrefabInstance: {fileID: 363945876}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1568424644
 GameObject:
   m_ObjectHideFlags: 0

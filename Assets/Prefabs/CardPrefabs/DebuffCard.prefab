@@ -719,7 +719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_canvas: {fileID: 0}
-  use: {fileID: 3724519070697871550}
+  play: {fileID: 0}
 --- !u!114 &6825424608183888965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -756,7 +756,7 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &4717064520242734300
 GameObject:

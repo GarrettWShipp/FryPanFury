@@ -155,7 +155,7 @@ public class UseCard : MonoBehaviour
                     m_playerManager.rageCounter++;
                 }
             }
-            cardManager.UseCard(prefab);
+            cardManager.discardCard(prefab);
             Destroy(gameObject);
             m_playerManager.curMana -= m_cardMana;
         }

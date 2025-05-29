@@ -1432,12 +1432,12 @@ MonoBehaviour:
   defBuffCounter: 0
   dmgIsDebuffed: 0
   dmgIsBuffed: 0
-  dmgBuffGFX: {fileID: 0}
-  dmgDebuffGFX: {fileID: 0}
+  dmgBuffGFX: {fileID: 2810771864725498334}
+  dmgDebuffGFX: {fileID: 1483851882872213225}
   defIsDebuffed: 0
   defIsBuffed: 0
-  defBuffGFX: {fileID: 0}
-  defDebuffGFX: {fileID: 0}
+  defBuffGFX: {fileID: 2810771864725498334}
+  defDebuffGFX: {fileID: 1483851882872213225}
   flashTime: 0.25
   Image: {fileID: 4510072630606928406}
   enemyAnimIsDone: 0
