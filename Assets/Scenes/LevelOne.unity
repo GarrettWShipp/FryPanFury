@@ -3237,15 +3237,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fbc77cd21d371e4d947431001495edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basicFights:
+  - B1
+  - B2
+  - B3
+  - B4
+  eliteFights:
+  - E1
+  - E2
+  - E3
+  - E4
+  shop: Shop
+  randomEncounters:
+  - R1
+  - R2
+  - R3
+  - R4
   wholeMap: []
   numOfRooms: 6
-  dungeon:
-    rooms: []
-  room:
-    doors: []
-  door:
-    scenes: 
-  sceneNames: []
 --- !u!224 &1700687199 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2807898061627439116, guid: 9bd85750117494b47afe01fa68cbd75a, type: 3}

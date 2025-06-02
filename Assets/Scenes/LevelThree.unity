@@ -599,7 +599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1019674162432630945, guid: 7e55aa844703975468a92c2bf7ca166e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4170871089704976794, guid: 7e55aa844703975468a92c2bf7ca166e, type: 3}
       propertyPath: CombatManager
