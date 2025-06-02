@@ -22,7 +22,8 @@ public class Fire : MonoBehaviour
     {
         if (m_playCard.cardPlayed)
         {
-            
+            m_playCard.enemyManager.onFire = true;
+            m_playCard.enemyManager.fireCounter += m_cardScript.fire;
         } 
     }
 }

@@ -22,7 +22,12 @@ public class Defend : MonoBehaviour
     {
         if (m_playCard.cardPlayed)
         {
-            
+            if (m_playerManager.isRaging)
+                {
+                    m_playerManager.bonusDmg += m_cardScript.Defensive;
+                }
+                else
+                    m_playerManager.defense += m_cardScript.Defensive;
         } 
     }
 }

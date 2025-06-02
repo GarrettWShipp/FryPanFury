@@ -7,9 +7,10 @@ public class Attack : MonoBehaviour
     private PlayCard m_playCard;
     private SimpleCardScript m_cardScript;
     private PlayerManager m_playerManager;
-    private EnemyManager m_enemyManager;
 
     [HideInInspector] public int cardAttack;
+    private int m_buffTotal;
+    private int m_debuffTotal;
 
     void Awake()
     {
@@ -20,32 +21,45 @@ public class Attack : MonoBehaviour
         m_cardScript = m_playCard.cardScript;
         m_playerManager = m_playCard.playerManager;
         cardAttack = m_cardScript.attack;
+        m_buffTotal = cardAttack * m_playerManager.dmgBuffValue;
+        m_debuffTotal = cardAttack / m_playerManager.dmgDebuffValue;
     }
     void Update()
     {
+        
+        cardAttack += m_playerManager.bonusDmg;
+        if (m_playerManager.dmgIsBuffed)
+        {
+            cardAttack = m_buffTotal;
+        }
+        if (m_playCard.playerManager.dmgIsDebuffed)
+        {
+            cardAttack = m_debuffTotal;
+        }
+        if (m_playerManager.dmgIsBuffed && m_playerManager.dmgIsDebuffed)
+        {
+            cardAttack = m_cardScript.attack;
+        }
+
+        if (!m_playerManager.dmgIsBuffed && !m_playerManager.dmgIsDebuffed)
+        {
+            cardAttack = m_cardScript.attack;
+        }
+        Debug.Log("" + cardAttack);
         if (m_playCard.cardPlayed)
         {
-            cardAttack += m_playerManager.bonusDmg;
-            if (m_playerManager.dmgIsBuffed)
+            if (m_playCard.enemyManager.defense > 0)
             {
-                cardAttack = cardAttack * m_playerManager.dmgBuffValue;
-            }
-            if (m_playCard.playerManager.dmgIsDebuffed)
-            {
-                cardAttack = cardAttack / m_playerManager.dmgDebuffValue;
-            }
-            if (m_enemyManager.defense > 0)
-            {
-                m_enemyManager.defense = m_enemyManager.defense - cardAttack;
-                cardAttack = cardAttack - m_enemyManager.defense;
+                m_playCard.enemyManager.defense -= cardAttack;
+                cardAttack -= m_playCard.enemyManager.defense;
             }
             if (cardAttack < 0)
             {
                 cardAttack = 0;
             }
-            if (m_enemyManager.defense <= 0)
+            if (m_playCard.enemyManager.defense <= 0)
             {
-                m_enemyManager.defense = 0;
+                m_playCard.enemyManager.defense = 0;
                 m_playCard.targetHealth.Damage(cardAttack);
                 Debug.Log("" + cardAttack);
             }

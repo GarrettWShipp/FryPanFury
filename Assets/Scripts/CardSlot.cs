@@ -28,7 +28,6 @@ public class CardSlot : MonoBehaviour, IDropHandler
                     _data.pointerDrag.GetComponent<PlayCard>().enemyManager = GetComponent<EnemyManager>();
                     _data.pointerDrag.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
                    _data.pointerDrag.GetComponent<PlayCard>().targetHealth = m_health;
-
                    _data.pointerDrag.GetComponent<DragnDrop>().play.Play();
                 }
             }

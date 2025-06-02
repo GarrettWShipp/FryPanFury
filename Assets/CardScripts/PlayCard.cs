@@ -8,7 +8,6 @@ public class PlayCard : MonoBehaviour
     [HideInInspector] public CardManager cardManager;
     [HideInInspector] public Health targetHealth;
     [HideInInspector] public EnemyManager enemyManager;
-    public GameObject prefab;
 
     private int m_cardMana;
     private int m_playerMana;
@@ -34,28 +33,23 @@ public class PlayCard : MonoBehaviour
             playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
         }
         m_playerMana = playerManager.curMana;
+        if (beingDragged)
+        {
+            GetComponent<CanvasGroup>().blocksRaycasts = false;
+        }
     }
     public void Play()
     {
         if (m_playerMana >= m_cardMana)
         {
             cardPlayed = true;
-            discardCard();
-            cardPlayed = false;
-            Destroy(gameObject);
             playerManager.curMana -= m_cardMana;
         }
     }
-    public void discardCard()
+    public void discardCard(int index)
     {
-        cardManager.Discard.Add(prefab);
-
-        for (int i = 0; i < cardManager.Hand.Count; i++)
-        {
-            if (cardManager.Hand[i].GetComponent<PlayCard>().cardScript == cardScript)
-            {
-                cardManager.Hand.Remove(cardManager.Hand[i]);
-            }
-        }
+        cardManager.discard.Add(cardManager.hand[index]);
+        cardManager.hand.Remove(cardManager.hand[index]);
+        gameObject.SetActive(false);
     }
 }

@@ -40,15 +40,19 @@ public class GameManager : MonoBehaviour
 
     public void GetData()
     {
-        
-        cards = m_cardManager.GetComponent<CardManager>().Deck;
+        cards = m_cardManager.GetComponent<CardManager>().deck;
         health = m_player.GetComponent<Health>().currentHealth;
         handSize = m_player.GetComponent<PlayerManager>().totalHandSize;
     }
 
     public void LoadData()
     {
-        m_cardManager.GetComponent<CardManager>().Deck = cards;
+        for (int i = 0; i < cards.Count - 1; i++)
+        {
+            GameObject newCard = Instantiate(cards[i], m_cardManager.GetComponent<CardManager>().cardBar.transform);
+            m_cardManager.GetComponent<CardManager>().deck.Add(newCard);
+            newCard.SetActive(false);
+        }
         m_player.GetComponent<Health>().currentHealth = health;
         m_player.GetComponent<PlayerManager>().totalHandSize = handSize;
         m_player.GetComponent<PlayerManager>().coins = coins;

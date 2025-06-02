@@ -22,7 +22,8 @@ public class DmgBuff : MonoBehaviour
     {
         if (m_playCard.cardPlayed)
         {
-            
+            m_playerManager.dmgIsBuffed = true;
+            m_playerManager.dmgBuffCounter += 3;
         } 
     }
 }

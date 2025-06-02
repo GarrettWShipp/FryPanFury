@@ -21,7 +21,7 @@ public class EndCombat : SimpleState
 
         ((CombatManager)stateMachine).gameManager.health = ((CombatManager)stateMachine).playerManager.GetComponent<Health>().currentHealth;
         ((CombatManager)stateMachine).gameManager.handSize = ((CombatManager)stateMachine).playerManager.GetComponent<PlayerManager>().totalHandSize;
-        ((CombatManager)stateMachine).gameManager.cards = ((CombatManager)stateMachine).cardManager.GetComponent<CardManager>().Deck;
+        ((CombatManager)stateMachine).gameManager.cards = ((CombatManager)stateMachine).cardManager.GetComponent<CardManager>().deck;
 
     }
 

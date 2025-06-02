@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Poison : MonoBehaviour
+public class DmgDebuff : MonoBehaviour
 {
     private PlayCard m_playCard;
     private SimpleCardScript m_cardScript;
@@ -22,8 +22,8 @@ public class Poison : MonoBehaviour
     {
         if (m_playCard.cardPlayed)
         {
-            m_playCard.enemyManager.isPoisoned = true;
-            m_playCard.enemyManager.poisonCounter += m_cardScript.poison;
+            m_playCard.enemyManager.dmgIsDebuffed = true;
+            m_playCard.enemyManager.dmgDebuffCounter += 3;
         } 
     }
 }

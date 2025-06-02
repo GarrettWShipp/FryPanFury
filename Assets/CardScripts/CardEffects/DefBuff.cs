@@ -22,7 +22,8 @@ public class DefBuff : MonoBehaviour
     {
         if (m_playCard.cardPlayed)
         {
-            
+            m_playerManager.defIsBuffed = true;
+            m_playerManager.defBuffCounter += 3;
         } 
     }
 }
