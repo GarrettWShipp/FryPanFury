@@ -3237,6 +3237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fbc77cd21d371e4d947431001495edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dungeon: {fileID: 0}
   basicFights:
   - B1
   - B2
@@ -3247,7 +3248,7 @@ MonoBehaviour:
   - E2
   - E3
   - E4
-  shop: Shop
+  shop: shop
   randomEncounters:
   - R1
   - R2
@@ -3255,6 +3256,8 @@ MonoBehaviour:
   - R4
   wholeMap: []
   numOfRooms: 6
+  roomCounter: 0
+  isDone: 0
 --- !u!224 &1700687199 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2807898061627439116, guid: 9bd85750117494b47afe01fa68cbd75a, type: 3}

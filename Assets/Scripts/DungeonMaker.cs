@@ -24,11 +24,14 @@ public class DungeonMaker : SceneChooser
 {
     public List<Dungeons> wholeMap;
     public int numOfRooms;
+    public int roomCounter = 0;
+    public bool isDone;
 
     void Start()
     {
         Dungeons newDungeon = new();
         wholeMap.Add(newDungeon);
+
     }
 
     void Update()
@@ -47,15 +50,6 @@ public class DungeonMaker : SceneChooser
             {
                 Doors newDoor = new();
                 wholeMap[0].rooms[i].doors.Add(newDoor);
-            }
-        }
-
-        for (int i = 0; i <= wholeMap[0].rooms.Count - 1; i++)
-        {
-            Debug.Log("" + wholeMap[0].rooms[i]);
-            for (int x = 0; x <= wholeMap[0].rooms[i].doors.Count - 1; x++)
-            {
-                Debug.Log("" + wholeMap[0].rooms[i].doors[x]);
             }
         }
         ChooseScenes();

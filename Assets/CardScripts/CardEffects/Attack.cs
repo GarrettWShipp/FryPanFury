@@ -45,7 +45,6 @@ public class Attack : MonoBehaviour
         {
             cardAttack = m_cardScript.attack;
         }
-        Debug.Log("" + cardAttack);
         if (m_playCard.cardPlayed)
         {
             if (m_playCard.enemyManager.defense > 0)
